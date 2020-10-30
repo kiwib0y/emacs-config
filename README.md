@@ -10,7 +10,7 @@ this is my full emacs configuration
 What I have done with it is the following 
 
 -   Added a visual bell top-bottom
--   Removed bell volume to 0
+-   Changed ring-bell volume to 0
 -   Added a dracula-theme.el in ~/.emacs.d/themes
 -   Added a parethesis pairing feature
 -   Added relative numbers
