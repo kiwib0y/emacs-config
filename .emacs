@@ -12,10 +12,10 @@
 (tool-bar-mode -1)	       ;; Disable the toolbar
 (scroll-bar-mode -1)	   ;; Disable the scrollbar
 (electric-pair-mode 1)	   ;; Electric pair parenthesis
-(show-paren-mode 1)	       ;; Show global parenthesis on all bufferS
+(show-paren-mode 1)		   ;; Show global parenthesis on all buffers
 (column-number-mode 1)	   ;; Add column number
 
-(setq-default tab-width 4) ;;
+(setq-default tab-width 4) 
 (defun my-insert-tab-char ()
   "Insert a tab char. (ASCII 9, \t)"
   (interactive)
