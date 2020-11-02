@@ -7,10 +7,22 @@
 ;; You may delete these explanatory comments.
 
 ;;; Code:
+(blink-cursor-mode 0)	   ;; Stop anoying blinking
+(set-fringe-mode 10)	   ;; Give breathing room
+(tool-bar-mode -1)	       ;; Disable the toolbar
+(scroll-bar-mode -1)	   ;; Disable the scrollbar
+(electric-pair-mode 1)	   ;; Electric pair parenthesis
+(show-paren-mode 1)	       ;; Show global parenthesis on all bufferS
+(column-number-mode 1)	   ;; Add column number
 
-(electric-pair-mode 1) ;; Electric pair parenthesis
-(show-paren-mode 1)    ;; Show global parenthesis on all buffers
-(set-fringe-mode 10)   ;; Give breathing room
+(setq-default tab-width 4) ;;
+(defun my-insert-tab-char ()
+  "Insert a tab char. (ASCII 9, \t)"
+  (interactive)
+  (insert "\t"))
+
+(global-set-key (kbd "TAB") 'my-insert-tab-char)
+(setq inhibit-startup-message t)
 
 ;; Set visible notification bell
 (setq visible-bell 'top-bottom)
@@ -24,7 +36,7 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/")
-	     '("org" . "https://orgmode.org/elpa/"))
+			 '("org" . "https://orgmode.org/elpa/"))
 
 ;; Check package sources
 (package-initialize)
@@ -44,26 +56,31 @@
   ("C-v" . View-scroll-half-page-forward)
   ("M-v" . View-scroll-half-page-backward))
 
-
-(use-package hydra) ;; Add hydra
+;;(use-package hydra)
 (use-package ivy
   :config
-  (ivy-mode 1))     ;; Add and toggle ivy
+  (ivy-mode 1))    
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-mode-height 15)))
+
+(use-package magit
+  :ensure t)
 
 
 ;;; ORG MODE config
-
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (C . t)))                  
-
+   (C . t)
+   (java . t)))                  
 
 (add-to-list 'load-path
-	     "~/.emacs.d/plugins/org-bullets") ;; Add new org bullets
+	     "~/.emacs.d/plugins/org-bullets") 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))) 
-
 ;;; ORG MODE ends here
 
 
@@ -72,7 +89,8 @@
               "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
-
+(use-package yasnippet-classic-snippets
+  :ensure t)
 
 ;; Add the dracula theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
