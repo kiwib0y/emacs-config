@@ -7,7 +7,7 @@
 ;; You may delete these explanatory comments.
 
 ;;; Code:
-(blink-cursor-mode 0)	   ;; Stop anoying blinking
+(blink-cursor-mode 1)	   ;; Set blinking
 (set-fringe-mode 10)	   ;; Give breathing room
 (tool-bar-mode -1)	       ;; Disable the toolbar
 (scroll-bar-mode -1)	   ;; Disable the scrollbar
@@ -15,6 +15,12 @@
 (show-paren-mode 1)		   ;; Show global parenthesis on all buffers
 (column-number-mode 1)	   ;; Add column number
 
+<<<<<<< HEAD
+
+(setq inhibit-startup-message t)
+
+=======
+>>>>>>> ee49d54... removed a few typos
 (setq-default tab-width 4) 
 (defun my-insert-tab-char ()
   "Insert a tab char. (ASCII 9, \t)"
@@ -22,7 +28,7 @@
   (insert "\t"))
 
 (global-set-key (kbd "TAB") 'my-insert-tab-char)
-(setq inhibit-startup-message t)
+
 
 ;; Set visible notification bell
 (setq visible-bell 'top-bottom)
@@ -31,6 +37,10 @@
 ;; Relative line numbers activation on a global scale
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
+
+;; Shell line-numbers set up
+(add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 ;; Initialize package source
 (require 'package)
@@ -49,14 +59,12 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-
 ;; Scroll only by half
 (use-package view
   :bind
   ("C-v" . View-scroll-half-page-forward)
   ("M-v" . View-scroll-half-page-backward))
 
-;;(use-package hydra)
 (use-package ivy
   :config
   (ivy-mode 1))    
@@ -69,18 +77,31 @@
 (use-package magit
   :ensure t)
 
+(use-package htmlize
+  :ensure t)
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.6))
 
 ;;; ORG MODE config
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
    (C . t)
-   (java . t)))                  
+   (java . t)))        
 
 (add-to-list 'load-path
 	     "~/.emacs.d/plugins/org-bullets") 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))) 
+
+(setq org-ellipsis "↴")
 ;;; ORG MODE ends here
 
 
