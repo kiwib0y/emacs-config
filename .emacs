@@ -7,28 +7,27 @@
 ;; You may delete these explanatory comments.
 
 ;;; Code:
+
 (blink-cursor-mode 1)	   ;; Set blinking
 (set-fringe-mode 10)	   ;; Give breathing room
-(tool-bar-mode -1)	       ;; Disable the toolbar
+(tool-bar-mode -1)       ;; Disable the toolbar
 (scroll-bar-mode -1)	   ;; Disable the scrollbar
-(electric-pair-mode 1)	   ;; Electric pair parenthesis
+(electric-pair-mode 1)   ;; Electric pair parenthesis
 (show-paren-mode 1)		   ;; Show global parenthesis on all buffers
-(column-number-mode 1)	   ;; Add column number
-
-<<<<<<< HEAD
+(column-number-mode 1)   ;; Add column number
 
 (setq inhibit-startup-message t)
 
-=======
->>>>>>> ee49d54... removed a few typos
-(setq-default tab-width 4) 
+(setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
+(load custom-file) 
+
+(setq-default tab-width 2) 
 (defun my-insert-tab-char ()
   "Insert a tab char. (ASCII 9, \t)"
   (interactive)
   (insert "\t"))
 
 (global-set-key (kbd "TAB") 'my-insert-tab-char)
-
 
 ;; Set visible notification bell
 (setq visible-bell 'top-bottom)
@@ -52,7 +51,6 @@
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
-
 ;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
 	(package-install 'use-package))
@@ -68,6 +66,10 @@
 (use-package ivy
   :config
   (ivy-mode 1))    
+
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
 
 (use-package doom-modeline
   :ensure t
@@ -88,6 +90,7 @@
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 0.6))
+
 
 ;;; ORG MODE config
 (org-babel-do-load-languages
