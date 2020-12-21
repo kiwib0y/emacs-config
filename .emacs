@@ -8,44 +8,41 @@
 
 ;;; Code:
 
-(blink-cursor-mode 1)	   ;; Set blinking
-(set-fringe-mode 10)	   ;; Give breathing room
+(blink-cursor-mode 1)    ;; Set blinking
+(set-fringe-mode 10)     ;; Give breathing room
 (tool-bar-mode -1)       ;; Disable the toolbar
-(scroll-bar-mode -1)	   ;; Disable the scrollbar
+(scroll-bar-mode -1)     ;; Disable the scrollbar
 (electric-pair-mode 1)   ;; Electric pair parenthesis
-(show-paren-mode 1)		   ;; Show global parenthesis on all buffers
 (column-number-mode 1)   ;; Add column number
-
+(show-paren-mode 1)      ;; Show global parenthesis on all buffers
 (setq inhibit-startup-message t)
 
 (setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
-(load custom-file) 
+(load custom-file)
 
-(setq-default tab-width 2) 
-(defun my-insert-tab-char ()
-  "Insert a tab char. (ASCII 9, \t)"
-  (interactive)
-  (insert "\t"))
-
-(global-set-key (kbd "TAB") 'my-insert-tab-char)
+;; Set tabs to be spaces
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
 
 ;; Set visible notification bell
 (setq visible-bell 'top-bottom)
 (setq bell-volume 0)
 
 ;; Relative line numbers activation on a global scale
+(defvar display-line-numbers-type)
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
 ;; Shell line-numbers set up
 (add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 ;; Initialize package source
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/")
-			 '("org" . "https://orgmode.org/elpa/"))
+						 '("melpa-stable" . "https://stable.melpa.org/packages/")
+						 '("org" . "https://orgmode.org/elpa/"))
 
 ;; Check package sources
 (package-initialize)
@@ -63,13 +60,19 @@
   ("C-v" . View-scroll-half-page-forward)
   ("M-v" . View-scroll-half-page-backward))
 
+
 (use-package ivy
-  :config
-  (ivy-mode 1))    
+	:diminish
+	:bind	("M-x" . 'counsel-M-x)
+				("C-s" . 'swiper)
+				("C-x C-f" . 'counsel-find-file)
+	:config
+  (ivy-mode 1))
 
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
+
 
 (use-package doom-modeline
   :ensure t
@@ -85,28 +88,58 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; Explain what key does
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 0.6))
 
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+   (when (file-directory-p "~/Github")
+    (setq projectile-project-search-path '("~/Github")))
+  (setq projectile-switch-project-action #'projectile-dired))
 
-;;; ORG MODE config
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (C . t)
-   (java . t)))        
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+					
+(use-package auto-complete-config
+  :ensure auto-complete
+  :bind (("C-<tab>" . my--auto-complete)
+				 ("M-n" . ac-next)
+				 ("M-p" . ac-previous)
+				 ("<tab>" . nil))
+  :init
+  (defun my--auto-complete ()
+    (interactive)
+    (unless (boundp 'auto-complete-mode)
+      (global-auto-complete-mode 1))
+	    (auto-complete)))
+				
+(set-default 'ac-sources
+             '(ac-source-abbrev
+               ac-source-dictionary
+               ac-source-yasnippet
+               ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers
+               ac-source-semantic))
+(ac-config-default)
 
-(add-to-list 'load-path
-	     "~/.emacs.d/plugins/org-bullets") 
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))) 
+;(dolist (m '(c-mode c++-mode java-mode css-mode html-mode org-mode))
+;'(add-to-list 'ac-modes m))
 
-(setq org-ellipsis "↴")
-;;; ORG MODE ends here
+(global-auto-complete-mode t)
 
+;;; ORG MODE
+(defvar org-file
+	(setq org-file (expand-file-name ".org-config.el" user-emacs-directory)))
+(load org-file)
 
 ;; Yasnippet activation here
 (add-to-list 'load-path
