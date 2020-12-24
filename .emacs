@@ -9,7 +9,7 @@
 ;;; Code:
 
 (blink-cursor-mode 1)    ;; Set blinking
-(set-fringe-mode 10)     ;; Give breathing room
+(set-fringe-mode 8)      ;; Give breathing room
 (tool-bar-mode -1)       ;; Disable the toolbar
 (scroll-bar-mode -1)     ;; Disable the scrollbar
 (electric-pair-mode 1)   ;; Electric pair parenthesis
@@ -21,7 +21,7 @@
 (load custom-file)
 
 ;; Set tabs to be spaces
-(setq-default tab-width 2)
+(setq tab-width 2)
 (setq-default indent-tabs-mode nil)
 
 ;; Set visible notification bell
@@ -41,8 +41,8 @@
 ;; Initialize package source
 (require 'package)
 (add-to-list 'package-archives
-						 '("melpa-stable" . "https://stable.melpa.org/packages/")
-						 '("org" . "https://orgmode.org/elpa/"))
+             '("melpa-stable" . "https://stable.melpa.org/packages/")
+             '("org" . "https://orgmode.org/elpa/"))
 
 ;; Check package sources
 (package-initialize)
@@ -57,16 +57,16 @@
 ;; Scroll only by half
 (use-package view
   :bind
-  ("C-v" . View-scroll-half-page-forward)
-  ("M-v" . View-scroll-half-page-backward))
+       ("C-v" . View-scroll-half-page-forward)
+       ("M-v" . View-scroll-half-page-backward))
 
 
 (use-package ivy
-	:diminish
-	:bind	("M-x" . 'counsel-M-x)
-				("C-s" . 'swiper)
-				("C-x C-f" . 'counsel-find-file)
-	:config
+  :diminish
+  :bind	("M-x" . 'counsel-M-x)
+        ("C-s" . 'swiper)
+        ("C-x C-f" . 'counsel-find-file)
+  :config
   (ivy-mode 1))
 
 (use-package ivy-rich
@@ -77,7 +77,7 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-mode-height 15)))
+  :custom ((doom-modeline-mode-height 12)))
 
 (use-package magit
   :ensure t)
@@ -108,33 +108,33 @@
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
-					
-(use-package auto-complete-config
-  :ensure auto-complete
-  :bind (("C-<tab>" . my--auto-complete)
-				 ("M-n" . ac-next)
-				 ("M-p" . ac-previous)
-				 ("<tab>" . nil))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
   :init
-  (defun my--auto-complete ()
-    (interactive)
-    (unless (boundp 'auto-complete-mode)
-      (global-auto-complete-mode 1))
-	    (auto-complete)))
-				
-(set-default 'ac-sources
-             '(ac-source-abbrev
-               ac-source-dictionary
-               ac-source-yasnippet
-               ac-source-words-in-buffer
-               ac-source-words-in-same-mode-buffers
-               ac-source-semantic))
-(ac-config-default)
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
 
-;(dolist (m '(c-mode c++-mode java-mode css-mode html-mode org-mode))
-;'(add-to-list 'ac-modes m))
-
-(global-auto-complete-mode t)
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+					
+(use-package company
+  :after lsp-mode
+  :hook (prog-mode . company-mode)
+  
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection)     
+         ("M-n" . company-select-next)
+         ("M-p" . company-select-previous))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
 
 ;;; ORG MODE
 (defvar org-file
