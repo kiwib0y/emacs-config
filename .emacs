@@ -83,8 +83,8 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-mode-height 12)))
-(setq doom-modeline-buffer-file-name-style 'auto)
+  :custom ((doom-modeline-mode-height 1)))
+
 
 (use-package magit
   :ensure t)
