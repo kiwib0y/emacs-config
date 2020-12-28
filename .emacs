@@ -17,7 +17,8 @@
 (show-paren-mode 1)      ;; Show global parenthesis on all buffers
 (setq inhibit-startup-message t)
 
-(setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
+(setq custom-file
+      (expand-file-name ".custom.el" user-emacs-directory))
 (load custom-file)
 
 ;; Set tabs to be spaces
@@ -60,7 +61,6 @@
        ("C-v" . View-scroll-half-page-forward)
        ("M-v" . View-scroll-half-page-backward))
 
-
 (use-package ivy
   :diminish
   :bind	("M-x" . 'counsel-M-x)
@@ -73,7 +73,13 @@
   :init
   (ivy-rich-mode 1))
 
-
+;; A useful tool for the =M-x= mode
+(use-package ivy-prescient
+  :after counsel
+  :config
+  (ivy-prescient-mode 1)
+  (prescient-persist-mode 1))
+  
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
@@ -121,11 +127,10 @@
   :hook (typescript-mode . lsp-deferred)
   :config
   (setq typescript-indent-level 2))
-					
+
 (use-package company
   :after lsp-mode
-  :hook (prog-mode . company-mode)
-  
+  :hook (prog-mode . company-mode)  
   :bind (:map company-active-map
          ("<tab>" . company-complete-selection)     
          ("M-n" . company-select-next)
@@ -136,9 +141,14 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0))
 
+(use-package company-prescient
+  :after company
+  :config
+  (company-prescient-mode 1))
+
 ;;; ORG MODE
 (defvar org-file
-	(setq org-file (expand-file-name ".org-config.el" user-emacs-directory)))
+  (setq org-file (expand-file-name ".org-config.el" user-emacs-directory)))
 (load org-file)
 
 ;; Yasnippet activation here

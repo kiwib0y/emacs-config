@@ -5,7 +5,6 @@
   This is a configuration file that includes all of my personal changes and improvements on the emacs 26
   Everything that I wrote here is ment to be in the .emacs file. Enjoy and feel free to add on new content.
 
-
 * What's in the header
   - Visual bell
   - Inhibit the startup message
@@ -32,7 +31,6 @@
   #+end_src
 
 * Features that I added on with time
-
 ** Made tabs like spaces
    My regular width is 2.
 
@@ -100,8 +98,6 @@
 
     #+end_src
 
-
-
 ** Custom variables
    I wanted to make a cleaner .emacs file so I changed where the
    custom variables are being saved. That way I can see better
@@ -129,7 +125,6 @@
      (load org-file)
 
    #+end_src
-
 
 ** Small features
    Here is a list of small features I added for a better experience 
@@ -213,3 +208,24 @@
    #+end_src
 
 
+** LSP-Mode
+   An important feature for completion and code refactoring
+*** TypeScript
+    I added a typescript lsp-server which gives me constant help when I am coding in =.ts=
+
+    #+begin_src emacs-lisp
+
+      (use-package lsp-mode
+        :commands (lsp lsp-deferred)
+        :init
+        (setq lsp-keymap-prefix "C-c l")
+        :config
+        (lsp-enable-which-key-integration t))
+
+      (use-package typescript-mode
+        :mode "\\.ts\\'"
+        :hook (typescript-mode . lsp-deferred)
+        :config
+        (setq typescript-indent-level 2))
+
+    #+end_src
