@@ -39,6 +39,11 @@
 (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
 
+;; Hook for commenting
+(add-hook 'prog-mode-hook
+          (lambda()
+            (define-key prog-mode-map (kbd "M-;") #'comment-or-uncomment-region)))
+
 ;; Initialize package source
 (require 'package)
 (add-to-list 'package-archives
@@ -83,9 +88,8 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-mode-height 15)))
+  :custom ((doom-modeline-mode-height 12)))
 (setq doom-modeline-buffer-file-name-style 'auto)
-
 
 (use-package magit
   :ensure t)
