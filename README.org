@@ -125,6 +125,8 @@
      (load org-file)
 
    #+end_src
+   
+   Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 
 ** Small features
    Here is a list of small features I added for a better experience 
