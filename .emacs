@@ -34,7 +34,7 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
-;; Shell line-numbers set up
+;; Line-numbers modes set up
 (add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
@@ -49,8 +49,9 @@
 ;; Initialize package source
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+             '(("melpa" . "https://melpa.org/packages/")
+             ("melpa-stable" . "https://stable.melpa.org/packages/")
+             ("org" . "https://orgmode.org/elpa/")) t)
 
 ;; Check package sources
 (package-initialize)
@@ -68,6 +69,7 @@
        ("C-v" . View-scroll-half-page-forward)
        ("M-v" . View-scroll-half-page-backward))
 
+;; Better completion with Ivy
 (use-package ivy
   :diminish
   :bind	("M-x" . 'counsel-M-x)
@@ -87,6 +89,7 @@
   (ivy-prescient-mode 1)
   (prescient-persist-mode 1))
 
+;; Better dired config
 (use-package dired
   :ensure nil
   :commands (dired dired-jump)
@@ -134,7 +137,7 @@
   :config
   (setq which-key-idle-delay 0.6))
 
-;; Coding config 
+;; Coding config
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
