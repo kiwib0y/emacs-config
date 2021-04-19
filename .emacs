@@ -18,7 +18,7 @@
 (setq inhibit-startup-message t)
 
 (setq custom-file
-      (expand-file-name ".custom.el" user-emacs-directory))
+      (expand-file-name "~/.emacs.d/kiwib0y-custom/custom.el" user-emacs-directory))
 (load custom-file)
 
 ;; Set tabs to be spaces
@@ -89,7 +89,12 @@
   (ivy-prescient-mode 1)
   (prescient-persist-mode 1))
 
+<<<<<<< HEAD
 ;; Better dired config
+=======
+(use-package all-the-icons)
+
+>>>>>>> Added a new js package
 (use-package dired
   :ensure nil
   :commands (dired dired-jump)
@@ -112,8 +117,6 @@
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
   :custom
   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
-
-(use-package all-the-icons)
 
 (use-package doom-modeline
   :ensure t
@@ -179,10 +182,11 @@
 
 (setq lsp-enable-links nil)
 
-(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
-(use-package dap-java :ensure nil)
+(use-package dap-mode
+  :after lsp-mode
+  :config (dap-auto-configure-mode))
 
-(use-package helm-lsp)
+(use-package dap-java :ensure nil)
 
 
 ;; Golang mode
@@ -200,6 +204,11 @@
   :config
   (setq typescript-indent-level 2))
 
+(use-package web-mode
+  :mode "\\.js[x]?\\'")
+
+;; TO BE CONTINUED!
+;; js mode
 
 ;; Company autocompletion
 (use-package company
@@ -225,7 +234,7 @@
 
 ;; ORG MODE
 (defvar org-file
-  (setq org-file (expand-file-name ".org-config.el" user-emacs-directory)))
+  (setq org-file (expand-file-name "~/.emacs.d/kiwib0y-org/org-config.el" user-emacs-directory)))
 (load org-file)
 
 ;; Yasnippet activation here
