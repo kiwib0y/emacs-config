@@ -1,21 +1,46 @@
-;;; PACKAGE --- Summary
+;;; .emacs --- kiwib0y's Emacs configuration
+
+;; Copyright 2021-present, All rights reserved
+;; Code licensed under the GNU GPL v.3 license
+
+;; Author: KiwiB0y
+;; URL: https://github.com/KiwiB0y/emacs-config
+
+;; This file is not part of GNU Emacs.
 
 ;;; Commentary:
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+
+;; This is my current Emacs configuration
+
+;;; License:
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 3
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to the
+;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
 
-(blink-cursor-mode 1)    ;; Set blinking
-(set-fringe-mode 8)      ;; Set the optimal fringe
-(tool-bar-mode -1)       ;; Disable the toolbar
-(scroll-bar-mode -1)     ;; Disable the scrollbar
-(electric-pair-mode 1)   ;; Electric pair parenthesis
-(column-number-mode 1)   ;; Add column number
-(show-paren-mode 1)      ;; Show global parenthesis on all buffers
+(blink-cursor-mode 1)           ;; Set blinking
+(set-fringe-mode 8)             ;; Set the optimal fringe
+(tool-bar-mode -1)              ;; Disable the toolbar
+(scroll-bar-mode -1)            ;; Disable the scrollbar
+(electric-pair-mode 1)          ;; Electric pair parenthesis
+(column-number-mode 1)          ;; Add column number
+(show-paren-mode 1)             ;; Show global parenthesis on all buffers
+(global-hl-line-mode 1)         ;; Highlight current line
 (setq inhibit-startup-message t)
+
 
 (setq custom-file
       (expand-file-name "~/.emacs.d/kiwib0y-custom/custom.el" user-emacs-directory))
@@ -23,7 +48,7 @@
 
 ;; Set tabs to be spaces
 (setq tab-width 2)
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode t)
 
 ;; Set visible notification bell
 (setq visible-bell 'top-bottom)
@@ -34,7 +59,7 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
-;; Line-numbers modes set up
+;; Shell line-numbers set up
 (add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
@@ -49,9 +74,8 @@
 ;; Initialize package source
 (require 'package)
 (add-to-list 'package-archives
-             '(("melpa" . "https://melpa.org/packages/")
-             ("melpa-stable" . "https://stable.melpa.org/packages/")
-             ("org" . "https://orgmode.org/elpa/")) t)
+             '("melpa" . "https://melpa.org/packages/")
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 ;; Check package sources
 (package-initialize)
@@ -69,7 +93,6 @@
        ("C-v" . View-scroll-half-page-forward)
        ("M-v" . View-scroll-half-page-backward))
 
-;; Better completion with Ivy
 (use-package ivy
   :diminish
   :bind	("M-x" . 'counsel-M-x)
@@ -89,12 +112,9 @@
   (ivy-prescient-mode 1)
   (prescient-persist-mode 1))
 
-<<<<<<< HEAD
-;; Better dired config
-=======
-(use-package all-the-icons)
+(use-package all-the-icons
+  :ensure t)
 
->>>>>>> Added a new js package
 (use-package dired
   :ensure nil
   :commands (dired dired-jump)
@@ -109,6 +129,9 @@
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 
+(use-package multiple-cursors)
+(global-set-key (kbd "C-c c m") 'mc/edit-lines)
+
 (use-package pdf-tools
   :pin manual
   :config
@@ -118,10 +141,23 @@
   :custom
   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
 
+(use-package autothemer
+  :ensure t)
+
+(use-package minions
+  :hook (doom-modeline-mode . minions-mode))
+
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-mode-height 12)))
+  :hook (after-init . doom-modeline-init)
+  :custom-face
+  (mode-line ((t (:height 1.0))))
+  (mode-line-inactive ((t (:height 1.0))))
+  :custom
+  (doom-modeline-lsp t)
+  (doom-modeline-minor-modes t)
+  (doom-modeline-mode-height 12))
+
 (setq doom-modeline-buffer-file-name-style 'auto)
 
 (use-package magit
@@ -188,14 +224,12 @@
 
 (use-package dap-java :ensure nil)
 
-
 ;; Golang mode
 (use-package go-mode
   :config
   (progn
     (setq gofmt-command "goimports")
     (add-hook 'before-save-hook 'gofmt-before-save)))
-
 
 ;; TS quickstart
 (use-package typescript-mode
@@ -206,6 +240,9 @@
 
 (use-package web-mode
   :mode "\\.js[x]?\\'")
+
+(use-package rainbow-mode
+  :ensure t)
 
 ;; TO BE CONTINUED!
 ;; js mode
@@ -244,6 +281,10 @@
 (yas-global-mode 1)
 (use-package yasnippet-classic-snippets
   :ensure t)
+
+;; currently what I am working on <---
+;; load my custom theme
+;; (load-theme 'antim t)
 
 ;; Add the dracula theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
