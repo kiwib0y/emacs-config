@@ -206,6 +206,13 @@
 
    #+end_src
 
+   I am also developing my own theme called the Antim theme. It's
+   what I currently am mostly working on
+   #+begin_src emacs-lisp
+     (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+     (load-theme 'antim t)
+   #+end_src
+
 ** LSP-Mode
    An important feature for completion and code refactoring
 
