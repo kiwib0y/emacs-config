@@ -269,6 +269,15 @@
   :config
   (company-prescient-mode 1))
 
+;; markdown
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 ;; ORG MODE
 (defvar org-file
   (setq org-file (expand-file-name "~/.emacs.d/kiwib0y-org/org-config.el" user-emacs-directory)))

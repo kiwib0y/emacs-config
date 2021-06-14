@@ -112,6 +112,20 @@
 
     #+end_src
 
+** Markdown
+   This is my markdown setup
+
+   #+begin_src emacs-lisp
+     ;; markdown
+     (use-package markdown-mode
+       :ensure t
+       :commands (markdown-mode gfm-mode)
+       :mode (("README\\.md\\'" . gfm-mode)
+	      ("\\.md\\'" . markdown-mode)
+	      ("\\.markdown\\'" . markdown-mode))
+       :init (setq markdown-command "multimarkdown"))
+   #+end_src
+
 ** Org-Mode
    I made an org-file that contains everything connected to my 
    org-mode configuration, similarly to what I've done with the
