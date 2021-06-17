@@ -224,6 +224,15 @@
 
 (use-package dap-java :ensure nil)
 
+;; LSP dart-mode
+(use-package lsp-dart
+  :ensure t
+  :hook (dart-mode . lsp-mode))
+
+;; Optional Flutter packages
+(use-package hover
+  :ensure t) ;; run app from desktop without emulator
+
 ;; Golang mode
 (use-package go-mode
   :config
