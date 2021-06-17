@@ -272,6 +272,20 @@
 
       (setq lsp-enable-links nil)
     #+END_SRC
+
+*** Dart
+
+    #+BEGIN_SRC emacs-lisp
+      ;; LSP dart-mode
+      (use-package lsp-dart
+	:ensure t
+	:hook (dart-mode . lsp-mode))
+
+      ;; Optional Flutter packages
+      (use-package hover
+	:ensure t) ;; run app from desktop without emulator
+    #+END_SRC
+
 ** Dired
    A better interface and keybindings for dired
    #+BEGIN_SRC emacs-lisp
