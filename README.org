@@ -5,7 +5,9 @@
   This is a configuration file that includes all of my personal changes and improvements on the emacs 26
   Everything that I wrote here is ment to be in the .emacs file. Enjoy and feel free to add on new content.
 
-* What's in the header
+* Features that I added on with time
+
+** Header
   - Visual bell
   - Inhibit the startup message
   - Blinking the cursor
@@ -13,7 +15,7 @@
   - Removed the scroll bar
   - Removed the tool bar
 
-  #+begin_src emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 
     (blink-cursor-mode 1)    ;; Set blinking
     (set-fringe-mode 10)     ;; Give breathing room
@@ -28,48 +30,47 @@
     (setq visible-bell 'top-bottom)
     (setq bell-volume 0)
 
-  #+end_src
+  #+END_SRC
 
-* Features that I added on with time
 ** Made tabs like spaces
    My regular width is 2.
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
      (setq tab-width 2)
      (setq-default indent-tabs-mode nil)
 
-   #+end_src
+   #+END_SRC
 
 ** Made line numbers relative
    I prefer relative numbers instead of static ones.
    That way I can jump through the files with ease.
 
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
      (defvar display-line-numbers-type)
      (setq display-line-numbers-type 'relative)
      (global-display-line-numbers-mode t)
 
-   #+end_src
+   #+END_SRC
    
 
 *** Hooks
     I added hooks for the all the terminal modes
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
      (add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
      (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
      (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
 
-   #+end_src
+   #+END_SRC
 
 ** The package archives
    I use only elpa and melpa packages
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
      (require 'package)
      (add-to-list 'package-archives
@@ -80,14 +81,14 @@
      (unless package-archive-contents
        (package-refresh-contents))
 
-   #+end_src
+   #+END_SRC
 
 *** Added use-package as well and turned it on by default
     use-package is a better archive management macro.
     [[https://github.com/jwiegley/use-package][Check its github page for more info]].
     
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 
       ;; Initialize use-package on all platforms
       (unless (package-installed-p 'use-package)
@@ -95,7 +96,7 @@
       (require 'use-package)
       (setq use-package-always-ensure t)
 
-    #+end_src
+    #+END_SRC
 
 ** Custom variables
    I wanted to make a cleaner .emacs file so I changed where the
@@ -103,19 +104,19 @@
    what is going in it.
 
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 
       ; NOTE: the .custom.el file should be created in .emacs.d/ directory or
       ; the equivalent directory of your emacs distribution  
       (setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
       (load custom-file)
 
-    #+end_src
+    #+END_SRC
 
 ** Markdown
    This is my markdown setup
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      ;; markdown
      (use-package markdown-mode
        :ensure t
@@ -124,20 +125,20 @@
 	      ("\\.md\\'" . markdown-mode)
 	      ("\\.markdown\\'" . markdown-mode))
        :init (setq markdown-command "multimarkdown"))
-   #+end_src
+   #+END_SRC
 
 ** Org-Mode
    I made an org-file that contains everything connected to my 
    org-mode configuration, similarly to what I've done with the
    custom file mentioned above
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
      (defvar org-file
        (setq org-file (expand-file-name ".org-config.el" user-emacs-directory)))
      (load org-file)
 
-   #+end_src
+   #+END_SRC
    
    Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 
@@ -146,38 +147,38 @@
    using emacs.
 *** View by half page
     
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 
       (use-package view
         :bind
         ("C-v" . View-scroll-half-page-forward)
         ("M-v" . View-scroll-half-page-backward))
 
-    #+end_src
+    #+END_SRC
 
 *** Doom emacs mode line
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 
       (use-package doom-modeline
         :ensure t
         :init   (doom-modeline-mode 1)
         :custom ((doom-modeline-mode-height 12)))
 
-    #+end_src
+    #+END_SRC
 
     In order to work properly just run the following command
     or refer to the original repos here [[https://github.com/seagle0128/doom-modeline][doom-modeline's page]] / [[https://github.com/domtronn/all-the-icons.el#installation][all-the-icons installation]].
 
-    #+begin_src 
+    #+BEGIN_SRC 
     M-x all-the-icons-install-fonts
-    #+end_src
+    #+END_SRC
 
 *** Ivy completion and ivy-rich
     This installs counsel and swiper as well.
     For futher info check [[https://github.com/abo-abo/swiper][Swiper's github page.]]
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 
       (use-package ivy
               :diminish
@@ -192,12 +193,12 @@
         :init
         (ivy-rich-mode 1))
 
-    #+end_src
+    #+END_SRC
 
 *** Which key 
     Explain what every key binding does in a simple way
 
-    #+begin_src emacs-lisp 
+    #+BEGIN_SRC emacs-lisp 
  
       (use-package which-key
         :init (which-key-mode)
@@ -205,12 +206,12 @@
         :config
         (setq which-key-idle-delay 0.6)) ;; This is what I've chosen as a delay
 
-    #+end_src
+    #+END_SRC
 
 ** Theme
    I use the dracula theme and here's how that looks in my .emacs file.
    You can get the dracula theme from [[https://draculatheme.com/emacs/][dracula theme for emacs]].
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
      (load-theme 'dracula t)
@@ -218,14 +219,14 @@
      (unless (display-graphic-p)
        (set-face-background 'default "black" nil))
 
-   #+end_src
+   #+END_SRC
 
    I am also developing my own theme called the Antim theme. It's
    what I currently am mostly working on
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
      (load-theme 'antim t)
-   #+end_src
+   #+END_SRC
 
 ** LSP-Mode
    An important feature for completion and code refactoring
@@ -233,7 +234,7 @@
 *** TypeScript
     I added a typescript lsp-server which gives me constant help when I am coding in =.ts=
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 
       (use-package lsp-mode
         :commands (lsp lsp-deferred)
@@ -248,7 +249,7 @@
         :config
         (setq typescript-indent-level 2))
 
-    #+end_src
+    #+END_SRC
 
 *** Go
     lsp-server for golang for the =.go= files
