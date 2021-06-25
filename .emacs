@@ -43,7 +43,7 @@
 
 
 (setq custom-file
-      (expand-file-name "~/.emacs.d/kiwib0y-custom/custom.el" user-emacs-directory))
+      (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
 (load custom-file)
 
 ;; Set tabs to be spaces
@@ -294,7 +294,7 @@
 
 ;; ORG MODE
 (defvar org-file
-  (setq org-file (expand-file-name "~/.emacs.d/kiwib0y-org/org-config.el" user-emacs-directory)))
+  (setq org-file (expand-file-name "~/.emacs.d/org/config.el" user-emacs-directory)))
 (load org-file)
 
 ;; Yasnippet activation here
