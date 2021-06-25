@@ -294,7 +294,7 @@
 
 ;; ORG MODE
 (defvar org-file
-  (setq org-file (expand-file-name "~/.emacs.d/org/config.el" user-emacs-directory)))
+  (setq org-file (expand-file-name "~/.emacs.d/org/org-config.el" user-emacs-directory)))
 (load org-file)
 
 ;; Yasnippet activation here
