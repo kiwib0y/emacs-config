@@ -304,6 +304,16 @@
      (use-package all-the-icons-dired
        :hook (dired-mode . all-the-icons-dired-mode))
    #+END_SRC
+** CIDER
+   This is the Clojure Interactive Development Environment
+   and more information can be found here [[https://github.com/clojure-emacs/cider][cider on github]] and here [[https://cider.mx/][cider's website]]
+
+   #+BEGIN_SRC emacs-lisp
+     ;; clojure config
+     (use-package cider
+       :ensure t)
+   #+END_SRC
+
 ** PDF-view
    Added a pdf-tools section to read PDFs in emacs.
    For additional information check [[https://github.com/politza/pdf-tools][pdf-tools' page]]
