@@ -256,6 +256,11 @@
 ;; TO BE CONTINUED!
 ;; js mode
 
+
+;; clojure config
+(use-package cider
+  :ensure t)
+
 ;; Company autocompletion
 (use-package company
   :after lsp-mode
