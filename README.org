@@ -24,6 +24,7 @@
     (electric-pair-mode 1)   ;; Electric pair parenthesis
     (column-number-mode 1)   ;; Add column number
     (show-paren-mode 1)      ;; Show global parenthesis on all buffers
+    (global-hl-line-mode 1)  ;; Set highlight line
     (setq inhibit-startup-message t)
 
     ;; Set visible notification bell
