@@ -33,7 +33,7 @@
 
   #+END_SRC
 
-** Made tabs like spaces
+** Tabs like spaces
    My regular width is 2.
 
    #+BEGIN_SRC emacs-lisp
