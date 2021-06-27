@@ -331,3 +331,13 @@
        :custom
        (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
    #+END_SRC
+** Emojify emacs
+   Added this package to see emojis
+   in Emacs
+
+   #+BEGIN_SRC emacs-lisp
+
+     (use-package emojify
+       :hook (after-init . global-emojify-mode))
+
+   #+END_SRC
