@@ -43,7 +43,7 @@
 
    #+END_SRC
 
-** Made line numbers relative
+** Relative line numbers
    I prefer relative numbers instead of static ones.
    That way I can jump through the files with ease.
 
