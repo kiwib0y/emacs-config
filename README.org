@@ -145,8 +145,8 @@
    
    Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 
-** Small features
-   Here is a list of small features I added for a better experience 
+** Essential features
+   Here is a list of some small but essential features I added for a better experience 
    using emacs.
 *** View by half page
     
