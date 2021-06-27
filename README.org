@@ -10,7 +10,7 @@
 ** Header
   - Visual bell
   - Inhibit the startup message
-  - Blinking the cursor
+  - Blinking cursor
   - Parenthesis pairing
   - Removed the scroll bar
   - Removed the tool bar
