@@ -34,11 +34,11 @@
   #+END_SRC
 
 ** Tabs like spaces
-   My regular width is 2.
+   My regular width is 4.
 
    #+BEGIN_SRC emacs-lisp
 
-     (setq tab-width 2)
+     (setq tab-width 4)
      (setq-default indent-tabs-mode nil)
 
    #+END_SRC
