@@ -234,6 +234,9 @@
 ** LSP-Mode
    An important feature for completion and code refactoring
 
+*** Flycheck
+    Check on the fly work for the 
+
 *** TypeScript
     I added a typescript lsp-server which gives me constant help when I am coding in =.ts=
 
