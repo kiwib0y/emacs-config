@@ -1,4 +1,4 @@
-#+title: README
+#+title: Emacs configuration
 #+author: KiwiBoaye
 #+options: num:nil date:nil
 * Emacs Configuration
