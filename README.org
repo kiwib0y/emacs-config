@@ -270,6 +270,7 @@
 
 *** Java
     lsp-java with a rather standard config
+    checkout more here at lsp-java's official [[https://github.com/emacs-lsp/lsp-java][github repository]]
     #+BEGIN_SRC emacs-lisp
       ;; LSP-JAVA quickstart
       (use-package lsp-java
