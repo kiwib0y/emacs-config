@@ -251,7 +251,12 @@
   (setq typescript-indent-level 2))
 
 (use-package web-mode
-  :mode "\\.js[x]?\\'")
+  :ensure t
+  :defer t
+  :mode ("\\.html\\'"
+         "\\.css\\'"
+         "\\.php\\'"
+         "\\.js[x]?\\'"))
 
 (use-package rainbow-mode
   :ensure t)
