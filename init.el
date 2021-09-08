@@ -160,14 +160,14 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Explain what key does
+;; explain what key does
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 0.6))
 
-;; Coding config
+;; coding setup
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -182,7 +182,7 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-;; LSP-mode enabled here
+;; lsp-mode setup
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook (lsp-mode . kiwib0y/lsp-mode-setup)
@@ -209,23 +209,23 @@
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
-;; LSP dart-mode
+;; lsp-dart mode setup
 (use-package lsp-dart
   :ensure t
   :hook (dart-mode . lsp-mode))
 
-;; Optional Flutter packages
+;; optional flutter packages
 (use-package hover
   :ensure t) ;; run app from desktop without emulator
 
-;; Golang mode
+;; golang mode setup
 (use-package go-mode
   :config
   (progn
     (setq gofmt-command "goimports")
     (add-hook 'before-save-hook 'gofmt-before-save)))
 
-;; TS quickstart
+;; typescript quickstart
 (use-package typescript-mode
   :mode "\\.ts\\'"
   :hook (typescript-mode . lsp-deferred)
