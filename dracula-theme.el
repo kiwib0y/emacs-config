@@ -619,7 +619,7 @@ read it before opening a new issue about your will.")
                (show-paren-match-face :background unspecified
                                       :foreground ,dracula-cyan
                                       :weight bold)
-               (show-paren-match :background unspecified
+               (show-paren-match :background ,fg4
                                  :foreground ,dracula-cyan
                                  :weight bold)
                (show-paren-match-expression :inherit match)
