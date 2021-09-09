@@ -269,6 +269,14 @@
   :config
   (company-prescient-mode 1))
 
+;; pdf-view setup
+(use-package pdf-tools
+  :ensure t
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-width)
+  (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
+
 ;; markdown setup
 (use-package markdown-mode
   :ensure t
