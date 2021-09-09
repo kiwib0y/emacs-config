@@ -74,7 +74,7 @@
 (require 'package)
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("elpa" . "https://elpa.gnu.org/packages/")
-			 ("org" . "https://orgmode.org/elpa")
+			 ("org" . "https://orgmode.org/elpa/")
                          ("melpa" . "https://melpa.org/packages/")))
 
 ;; check package sources
