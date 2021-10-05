@@ -41,6 +41,7 @@
 (show-paren-mode 1)             ;; Show global parenthesis on all buffers
 (global-hl-line-mode 1)         ;; Highlight current line
 (setq inhibit-startup-message t)
+(setq ad-redefinition-action 'accept)
 
 (setq custom-file
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
