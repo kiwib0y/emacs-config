@@ -66,6 +66,8 @@
 (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'image-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 ;; hook for commenting
 (add-hook 'prog-mode-hook
