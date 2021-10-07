@@ -74,7 +74,7 @@
           (lambda()
             (define-key prog-mode-map (kbd "M-;") #'comment-or-uncomment-region)))
 
-;; Initialize package source
+;; initialize package source
 (require 'package)
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("elpa" . "https://elpa.gnu.org/packages/")
