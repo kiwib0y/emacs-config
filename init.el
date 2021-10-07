@@ -60,7 +60,7 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
-;; shell line-numbers set up
+;; line-numbers set up for different modes
 (add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
 (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
