@@ -137,9 +137,9 @@
 
    #+BEGIN_SRC emacs-lisp
 
-     (defvar org-file
-       (setq org-file (expand-file-name ".org-config.el" user-emacs-directory)))
-     (load org-file)
+     (setq custom-file
+           (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
+     (load custom-file)
 
    #+END_SRC
    
