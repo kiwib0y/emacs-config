@@ -137,6 +137,58 @@ org-mode with this setup
 
 #+BEGIN_SRC emacs-lisp
 
+  (defun kiwib0y/org-mode-setup ()
+    (org-indent-mode)
+    (visual-line-mode 1))
+
+  (use-package org
+    :defer t
+    :hook (org-mode . kiwib0y/org-mode-setup)
+    :config
+    (setq org-ellipsis "↴")
+    (setq org-hide-emphasis-markers t)
+
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (C . t)
+       (java . t)
+       (python . t)
+       (ruby . t))))
+
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq latex-run-command "pdflatex")
+
+  (require 'org-tempo)
+
+  (use-package org-tree-slide
+    :custom
+    (org-image-actual-width nil))
+
+  (use-package org-bullets
+    :after org
+    :hook (org-mode . org-bullets-mode)
+    :custom
+    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●" "○")))
+
+  (with-eval-after-load 'org-faces
+    (set-face-attribute 'org-document-title nil :weight 'bold :height 1.32)
+    (dolist (face '((org-level-1 . 1.3)
+                    (org-level-2 . 1.2)
+                    (org-level-3 . 1.1)
+                    (org-level-4 . 1.0)
+                    (org-level-5 . 1.0)
+                    (org-level-6 . 1.0)
+                    (org-level-7 . 1.0)
+                    (org-level-8 . 1.0)))
+      (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
+
+
+
+#+END_SRC
+
 
    #+END_SRC
    
