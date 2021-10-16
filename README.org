@@ -204,8 +204,18 @@ column width and I set the text to be in the center
 
 #+END_SRC
 
+I put my org-agenda files in a separate folder
+
+#+BEGIN_SRC emacs-lisp
+  ;; org-mode agenda setup
+  (setq org-agenda-files
+        '("~/.emacs.d/OrgFiles/Tasks.org"))
+
+  (add-to-list 'load-path
+               org-agenda-files)
+
+#+END_SRC
    
-   Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 
 ** Essential features
