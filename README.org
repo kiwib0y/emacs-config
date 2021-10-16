@@ -189,8 +189,21 @@ org-mode with this setup
 
 #+END_SRC
 
+This is how I format org-mode through setting the
+column width and I set the text to be in the center
 
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+
+  (defun kiwib0y/org-mode-visual-fill ()
+    (setq visual-fill-column-width 120
+          visual-fill-column-center-text t)
+    (visual-fill-column-mode 1))
+
+  (use-package visual-fill-column
+    :hook (org-mode . kiwib0y/org-mode-visual-fill))
+
+#+END_SRC
+
    
    Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
