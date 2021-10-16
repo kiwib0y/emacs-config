@@ -147,6 +147,7 @@ org-mode with this setup
    #+END_SRC
    
    Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
+Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 
 ** Essential features
    Here is a list of some small but essential features I added for a better experience 
