@@ -132,9 +132,6 @@
    #+END_SRC
 
 ** Org-Mode
-   I made an org-file that contains everything connected to my 
-   org-mode configuration, similarly to what I've done with the
-   custom file mentioned above
 I changed my mind over time and started configuring
 org-mode with this setup
 
