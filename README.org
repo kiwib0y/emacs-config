@@ -109,9 +109,10 @@
 
     #+BEGIN_SRC emacs-lisp
 
-      ; NOTE: the .custom.el file should be created in .emacs.d/ directory or
-      ; the equivalent directory of your emacs distribution  
-      (setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
+      ;; NOTE: the .custom.el file should be created in .emacs.d/custom/ directory or
+      ;; the equivalent directory of your emacs distribution or just create a directory yourself
+      (setq custom-file
+            (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
       (load custom-file)
 
     #+END_SRC
@@ -134,6 +135,8 @@
    I made an org-file that contains everything connected to my 
    org-mode configuration, similarly to what I've done with the
    custom file mentioned above
+I changed my mind over time and started configuring
+org-mode with this setup
 
    #+BEGIN_SRC emacs-lisp
 
