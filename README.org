@@ -135,7 +135,7 @@
 I changed my mind over time and started configuring
 org-mode with this setup
 
-   #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
      (setq custom-file
            (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
