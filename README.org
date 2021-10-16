@@ -137,9 +137,6 @@ org-mode with this setup
 
 #+BEGIN_SRC emacs-lisp
 
-     (setq custom-file
-           (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
-     (load custom-file)
 
    #+END_SRC
    
