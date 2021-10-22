@@ -222,6 +222,17 @@
 (use-package hover
   :ensure t) ;; run app from desktop without emulator
 
+;; python programming setup
+(use-package python-mode
+  :ensure nil
+  :hook (python-mode . lsp-deferred)
+  :custom
+  (python-shell-interpreter "python3")
+  (dap-python-executable "python3")
+  (dap-python-debugger 'debugpy)
+  :config
+  (require 'dap-python))
+
 ;; rust programming setup
 (use-package rust-mode
   :config
