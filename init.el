@@ -415,4 +415,4 @@
 (setq dracula-use-24-bit-colors-on-256-colors-terms t)
 (unless (display-graphic-p)
   (set-face-background 'default "black" nil))
-;;; .emacs ends here
+;;; init.el ends here
