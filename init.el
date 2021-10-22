@@ -191,7 +191,7 @@
   :commands (lsp lsp-deferred)
   :hook (lsp-mode . kiwib0y/lsp-mode-setup)
   :init
-  (setq lsp-keymap-prefix "C-c l") ;; Or 'C-l' , 's-l' or the other one 
+  (setq lsp-keymap-prefix "C-c l") ;; Or 'C-l' , 's-l' or the other one
   :config
   (lsp-enable-which-key-integration t))
 
