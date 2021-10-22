@@ -233,6 +233,10 @@
   :config
   (require 'dap-python))
 
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
 ;; rust programming setup
 (use-package rust-mode
   :config
