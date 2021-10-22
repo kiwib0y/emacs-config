@@ -239,7 +239,7 @@
 
 ;; rust programming setup
 (use-package rust-mode
-  :hook (rust-mode . lsp-mode)
+  :hook (rust-mode . lsp-deferred)
   :config
   (add-hook 'lsp-rust-server #'rust-analyzer)
   (add-hook 'racer-mode-hook #'eldoc-mode)
