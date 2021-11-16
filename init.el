@@ -324,7 +324,7 @@
          ("<tab>" . company-indent-or-complete-common))
   :custom
   (company-minimum-prefix-length 2)
-  (company-idle-delay 0.1)
+  (company-idle-delay 0.0)
   (diminish 'company-mode))
 
 (use-package company-box
