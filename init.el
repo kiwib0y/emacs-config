@@ -187,6 +187,10 @@
   :config (counsel-projectile-mode))
 
 ;; lsp-mode setup
+(defun kiwib0y/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook (lsp-mode . kiwib0y/lsp-mode-setup)
