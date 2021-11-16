@@ -277,6 +277,18 @@
 (use-package rainbow-mode
   :ensure t)
 
+;; paredit mode
+(use-package paredit
+  :ensure t
+  :diminish paredit-mode
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+  ;; enable in the *scratch* buffer
+  (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
+  (add-hook 'clojure-mode-hook #'paredit-mode)
+  (add-hook 'lisp-mode-hook #'paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
+
 ;; clojure programming setup
 (use-package clojure-mode
   :ensure t
