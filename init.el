@@ -40,6 +40,7 @@
 (column-number-mode 1)          ;; Add column number
 (show-paren-mode 1)             ;; Show global parenthesis on all buffers
 (global-hl-line-mode 1)         ;; Highlight current line
+(bell-volume nil)               ;; Set the error bell to nil
 (setq inhibit-startup-message t)
 (setq ad-redefinition-action 'accept)
 
@@ -53,7 +54,6 @@
 
 ;; set visible notification bell
 (setq visible-bell 'top-bottom)
-(setq bell-volume 0)
 
 ;; relative line numbers activation on a global scale
 (defvar display-line-numbers-type)
