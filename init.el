@@ -197,6 +197,9 @@
   :init
   (global-flycheck-mode t))
 
+(use-package flycheck-joker ;; flycheck for clojure
+  :ensure t)
+
 ;; lsp-mode setup
 (defun kiwib0y/lsp-mode-setup ()
   "Here is my lsp-mode-setup function."
