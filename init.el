@@ -157,7 +157,8 @@
 (setq doom-modeline-buffer-file-name-style 'auto)
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :bind ("C-x g" . magit-status))
 
 (use-package htmlize
   :ensure t)
