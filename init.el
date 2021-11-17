@@ -188,6 +188,12 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
+;; flycheck syntax checking setup
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+
 ;; lsp-mode setup
 (defun kiwib0y/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
