@@ -163,6 +163,9 @@
 (use-package htmlize
   :ensure t)
 
+(use-package rainbow-mode
+  :ensure t)
+
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -286,9 +289,6 @@
          "\\.css\\'"
          "\\.php\\'"
          "\\.js[x]?\\'"))
-
-(use-package rainbow-mode
-  :ensure t)
 
 ;; paredit mode
 (use-package paredit
