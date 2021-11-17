@@ -196,6 +196,7 @@
 
 ;; lsp-mode setup
 (defun kiwib0y/lsp-mode-setup ()
+  "Here is my lsp-mode-setup function."
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
 
@@ -366,6 +367,7 @@
 
 ;; org-mode setup
 (defun kiwib0y/org-mode-setup ()
+  "My personal org mode setup function."
   (org-indent-mode)
   (visual-line-mode 1))
 
@@ -414,6 +416,7 @@
     (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
 
 (defun kiwib0y/org-mode-visual-fill ()
+  "Here is my org-mode-visual-fill function."
   (setq visual-fill-column-width 120
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
