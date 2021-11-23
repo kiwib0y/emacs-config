@@ -433,14 +433,16 @@
 (add-to-list 'load-path
              org-agenda-files)
 
-;; currently what I am working on <---
-;; load my custom theme
-;; (load-theme 'antim t)
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (setq zenburn-scale-org-headlines t)
+  (load-theme 'zenburn t))
 
 ;; Add the dracula theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
-(setq dracula-use-24-bit-colors-on-256-colors-terms t)
-(unless (display-graphic-p)
-  (set-face-background 'default "black" nil))
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (load-theme 'dracula)
+;; (setq dracula-use-24-bit-colors-on-256-colors-terms t)
+;; (unless (display-graphic-p)
+;;   (set-face-background 'default "black" nil))
 ;;; init.el ends here
