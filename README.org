@@ -29,7 +29,7 @@
 
     ;; Set visible notification bell
     (setq visible-bell 'top-bottom)
-    (setq bell-volume 0)
+
 
   #+END_SRC
 
