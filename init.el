@@ -134,7 +134,7 @@
   :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package emojify
-  :hook (after-init . global-emojify-mode))
+  :hook (markdown-mode . emojify-mode))
 
 (use-package multiple-cursors)
 (global-set-key (kbd "C-c c m") 'mc/edit-lines)
