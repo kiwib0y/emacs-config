@@ -318,6 +318,7 @@
   :ensure t
   :config
   (add-hook 'clojure-mode-hook #'paredit-mode)
+  (add-hook 'clojure-mode-hook #'lsp)
   (add-hook 'clojure-mode-hook #'company-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
   (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
