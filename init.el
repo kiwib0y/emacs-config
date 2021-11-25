@@ -380,7 +380,7 @@
 ;; org-mode setup
 (defun kiwib0y/org-mode-setup ()
   "My personal org mode setup function."
-  (org-indent-mode)
+  (org-indent-mode t)
   (visual-line-mode 1))
 
 (use-package org
