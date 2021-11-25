@@ -220,7 +220,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l") ;; Or 'C-l' , 's-l' or the other one
   :config
-  (lsp-enable-which-key-integration t))
+  (setq lsp-enable-which-key-integration t))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
