@@ -225,7 +225,7 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :custom
-  (lsp-ui-doc-position 'bottom))
+  (lsp-ui-doc-position 'at-point))
 
 (use-package lsp-treemacs
   :after lsp-mode)
