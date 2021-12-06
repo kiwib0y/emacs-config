@@ -311,22 +311,19 @@
   :config
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook #'company-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'clojure-mode-hook #'subword-mode))
 
 (use-package inf-clojure
   :ensure t
   :config
-  (add-hook 'inf-clojure-mode-hook #'paredit-mode)
-  (add-hook 'inf-clojure-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'inf-clojure-mode-hook #'paredit-mode))
 
 (use-package cider
   :ensure t
   :config
   (setq nrepl-log-messages t)
   (add-hook 'cider-repl-mode-hook #'company-mode)
-  (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
 ;; company autocompletion setup
 (use-package company
