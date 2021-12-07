@@ -52,8 +52,9 @@
 (setq-default indent-tabs-mode t)
 (setq tab-always-indent 'complete)
 
-;; set visible notification bell
+;; set visible notification bell and disable annoying ringing
 (setq visible-bell 'top-bottom)
+(setq ring-bell-function 'ignore)
 
 ;; relative line numbers activation on a global scale
 (defvar display-line-numbers-type)
