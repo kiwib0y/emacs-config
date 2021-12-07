@@ -47,9 +47,10 @@
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
 (load custom-file)
 
-;; set tabs to be spaces
+;; set tabs to be 2 spaces
 (setq tab-width 2)
 (setq-default indent-tabs-mode t)
+(setq tab-always-indent 'complete)
 
 ;; set visible notification bell
 (setq visible-bell 'top-bottom)
