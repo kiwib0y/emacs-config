@@ -32,7 +32,7 @@
 
 ;;; Code:
 
-(blink-cursor-mode 1)           ;; Set blinking
+(blink-cursor-mode -1)          ;; Disable cursor blink
 (set-fringe-mode 8)             ;; Set the optimal fringe
 (tool-bar-mode -1)              ;; Disable the toolbar
 (scroll-bar-mode -1)            ;; Disable the scrollbar
