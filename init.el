@@ -86,10 +86,10 @@
 ;; check package sources
 (package-initialize)
 (unless package-archive-contents
- (package-refresh-contents))
+  (package-refresh-contents))
 ;; initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
-   (package-install 'use-package))
+  (package-install 'use-package))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -97,14 +97,15 @@
 ;; scroll only by half
 (use-package view
   :bind
-       ("C-v" . View-scroll-half-page-forward)
-       ("M-v" . View-scroll-half-page-backward))
+  ("C-v" . View-scroll-half-page-forward)
+  ("M-v" . View-scroll-half-page-backward))
 
 (use-package ivy
   :diminish
-  :bind	("M-x" . 'counsel-M-x)
-        ("C-s" . 'swiper)
-        ("C-x C-f" . 'counsel-find-file)
+  :bind
+  ("M-x" . 'counsel-M-x)
+  ("C-s" . 'swiper)
+  ("C-x C-f" . 'counsel-find-file)
   :config
   (ivy-mode 1))
 
@@ -181,12 +182,12 @@
 ;; coding setup
 (use-package projectile
   :diminish projectile-mode
-  :config (projectile-mode)
+  :config (projectile-mode +1)
   :custom ((projectile-completion-system 'ivy))
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-   (when (file-directory-p "~/Github")
+  (when (file-directory-p "~/Github")
     (setq projectile-project-search-path '("~/Github")))
   (setq projectile-switch-project-action #'projectile-dired))
 
@@ -331,12 +332,13 @@
 (use-package company
   :after lsp-mode
   :hook (prog-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection)
-         ("M-n" . company-select-next)
-         ("M-p" . company-select-previous))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
+  :bind
+  (:map company-active-map
+        ("<tab>" . company-complete-selection)
+        ("M-n" . company-select-next)
+        ("M-p" . company-select-previous))
+  (:map lsp-mode-map
+        ("<tab>" . company-indent-or-complete-common))
   :custom
   (company-minimum-prefix-length 2)
   (company-idle-delay 0.0)
@@ -381,12 +383,12 @@
   (setq org-hide-emphasis-markers t)
 
   (org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (C . t)
-   (java . t)
-   (python . t)
-   (ruby . t))))
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (C . t)
+     (java . t)
+     (python . t)
+     (ruby . t))))
 
 (setq org-agenda-start-with-log-mode t)
 (setq org-log-done 'time)
@@ -396,8 +398,8 @@
 (require 'org-tempo)
 
 (use-package org-tree-slide
-	:custom
-	(org-image-actual-width nil))
+  :custom
+  (org-image-actual-width nil))
 
 (use-package org-bullets
   :after org
