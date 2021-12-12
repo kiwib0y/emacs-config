@@ -40,6 +40,7 @@
 (column-number-mode 1)          ;; Add column number
 (show-paren-mode 1)             ;; Show global parenthesis on all buffers
 (global-hl-line-mode 1)         ;; Highlight current line
+
 (setq inhibit-startup-message t)
 (setq ad-redefinition-action 'accept) ;; Remove redefinition warning
 
