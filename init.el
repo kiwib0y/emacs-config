@@ -431,7 +431,7 @@
 
 ;; org-mode agenda setup
 (setq org-agenda-files
-      '("~/.emacs.d/OrgFiles/Tasks.org"))
+      '("~/.emacs.d/OrgFiles/Agenda.org"))
 
 (add-to-list 'load-path
              org-agenda-files)
