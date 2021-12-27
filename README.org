@@ -28,12 +28,14 @@ This is an updated version of my emacs header.
   #+END_SRC
 
 ** Tabs like spaces
-   My regular width is 4.
+   I set tab width to 2.
 
    #+BEGIN_SRC emacs-lisp
 
-     (setq tab-width 4)
-     (setq-default indent-tabs-mode nil)
+     ;; set tabs to be 2 spaces
+     (setq tab-width 2)
+     (setq-default indent-tabs-mode t)
+     (setq tab-always-indent 'complete)
 
    #+END_SRC
 
