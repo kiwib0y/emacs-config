@@ -12,28 +12,18 @@ Enjoy and feel free to add on new content.
 * Features that I added on with time
 
 ** Header
-  - Visual bell
-  - Inhibit the startup message
-  - Blinking cursor
-  - Parenthesis pairing
-  - Removed the scroll bar
-  - Removed the tool bar
+This is an updated version of my emacs header.
 
   #+BEGIN_SRC emacs-lisp
 
-    (blink-cursor-mode 1)    ;; Set blinking
-    (set-fringe-mode 10)     ;; Give breathing room
-    (tool-bar-mode -1)       ;; Disable the toolbar
-    (scroll-bar-mode -1)     ;; Disable the scrollbar
-    (electric-pair-mode 1)   ;; Electric pair parenthesis
-    (column-number-mode 1)   ;; Add column number
-    (show-paren-mode 1)      ;; Show global parenthesis on all buffers
-    (global-hl-line-mode 1)  ;; Set highlight line
-    (setq inhibit-startup-message t)
-
-    ;; Set visible notification bell
-    (setq visible-bell 'top-bottom)
-
+    (blink-cursor-mode -1)          ;; Disable cursor blink
+    (set-fringe-mode 8)             ;; Set the optimal fringe
+    (tool-bar-mode -1)              ;; Disable the toolbar
+    (scroll-bar-mode -1)            ;; Disable the scrollbar
+    (electric-pair-mode 1)          ;; Electric pair parenthesis
+    (column-number-mode 1)          ;; Add column number
+    (show-paren-mode 1)             ;; Show global parenthesis on all buffers
+    (global-hl-line-mode 1)         ;; Highlight current line
 
   #+END_SRC
 
