@@ -51,16 +51,19 @@ This is an updated version of my emacs header.
    #+END_SRC
    
 
-*** Hooks
-    I added hooks for the all the terminal modes
+** Hooks
+    I don't like seeing rows in these modes.
 
    #+BEGIN_SRC emacs-lisp
 
-     (add-hook 'shell-mode-hook (lambda () (display-line-numbers-mode 0)))
-     (add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
-     (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode 0)))
-     (add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode 0)))
-     (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode 0)))
+     (dolist (mode '(shell-mode-hook
+                     eshell-mode-hook
+                     term-mode-hook
+                     treemacs-mode-hook
+                     org-mode-hook
+                     pdf-view-mode-hook
+                     image-mode-hook))
+       (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
    #+END_SRC
 
