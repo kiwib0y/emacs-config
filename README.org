@@ -14,28 +14,28 @@ Enjoy and feel free to add on new content.
 ** Header
 This is an updated version of my emacs header.
 
-  #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
-    (blink-cursor-mode -1)          ;; Disable cursor blink
-    (set-fringe-mode 8)             ;; Set the optimal fringe
-    (tool-bar-mode -1)              ;; Disable the toolbar
-    (scroll-bar-mode -1)            ;; Disable the scrollbar
-    (electric-pair-mode 1)          ;; Electric pair parenthesis
-    (column-number-mode 1)          ;; Add column number
-    (show-paren-mode 1)             ;; Show global parenthesis on all buffers
-    (global-hl-line-mode 1)         ;; Highlight current line
+  (blink-cursor-mode -1)          ;; Disable cursor blink
+  (set-fringe-mode 8)             ;; Set the optimal fringe
+  (tool-bar-mode -1)              ;; Disable the toolbar
+  (scroll-bar-mode -1)            ;; Disable the scrollbar
+  (electric-pair-mode 1)          ;; Electric pair parenthesis
+  (column-number-mode 1)          ;; Add column number
+  (show-paren-mode 1)             ;; Show global parenthesis on all buffers
+  (global-hl-line-mode 1)         ;; Highlight current line
 
-  #+END_SRC
+#+END_SRC
 
 ** Tabs like spaces
-   I set tab width to 2.
+I set tab width to 2.
 
-   #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
-     ;; set tabs to be 2 spaces
-     (setq tab-width 2)
-     (setq-default indent-tabs-mode t)
-     (setq tab-always-indent 'complete)
+  ;; set tabs to be 2 spaces
+  (setq tab-width 2)
+  (setq-default indent-tabs-mode t)
+  (setq tab-always-indent 'complete)
 
    #+END_SRC
 
