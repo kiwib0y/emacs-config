@@ -27,7 +27,7 @@ This is an updated version of my emacs header.
 
 #+END_SRC
 
-** Tabs like spaces
+** Tabs
 I set tab width to 2.
 
 #+BEGIN_SRC emacs-lisp
@@ -52,7 +52,6 @@ I set tab width to 2.
 
    #+END_SRC
    
-
 ** Hooks
     I don't like seeing rows in these modes.
 
