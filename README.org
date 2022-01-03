@@ -303,10 +303,7 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
    #+END_SRC
 
 ** LSP-Mode
-   An important feature for completion and code refactoring
-
-*** Flycheck
-    Check on the fly work for the 
+An important feature for completion and code refactoring
 
 *** TypeScript
     I added a typescript lsp-server which gives me constant help when I am coding in =.ts=
