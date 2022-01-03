@@ -328,43 +328,6 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
 
     #+END_SRC
 
-*** Go
-    lsp-server for golang for the =.go= files
-    #+BEGIN_SRC emacs-lisp
-      ;; Golang mode
-      (use-package go-mode
-        :config
-        (progn
-          (setq gofmt-command "goimports")
-          (add-hook 'before-save-hook 'gofmt-before-save)))
-    #+END_SRC
-
-*** Java
-    lsp-java with a rather standard config
-    checkout more here at lsp-java's official [[https://github.com/emacs-lsp/lsp-java][github repository]]
-    #+BEGIN_SRC emacs-lisp
-      ;; LSP-JAVA quickstart
-      (use-package lsp-java
-        :ensure t
-        :after lsp-mode
-        :config (add-hook 'java-mode-hook 'lsp))
-
-      (setq lsp-enable-links nil)
-    #+END_SRC
-
-*** Dart
-
-    #+BEGIN_SRC emacs-lisp
-      ;; LSP dart-mode
-      (use-package lsp-dart
-	:ensure t
-	:hook (dart-mode . lsp-mode))
-
-      ;; Optional Flutter packages
-      (use-package hover
-	:ensure t) ;; run app from desktop without emulator
-    #+END_SRC
-
 ** Dired
    A better interface and keybindings for dired
    #+BEGIN_SRC emacs-lisp
