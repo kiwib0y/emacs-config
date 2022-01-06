@@ -430,11 +430,11 @@
   :hook (org-mode . kiwib0y/org-mode-visual-fill))
 
 ;; org-mode agenda setup
-(setq org-agenda-files
-      '("~/.emacs.d/OrgFiles/Agenda.org"))
+;; (setq org-agenda-files
+;;       '("~/.emacs.d/OrgFiles/Agenda.org"))
 
-(add-to-list 'load-path
-             org-agenda-files)
+;; (add-to-list 'load-path
+;;              org-agenda-files)
 
 (use-package zenburn-theme
   :ensure t
