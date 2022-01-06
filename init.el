@@ -198,11 +198,9 @@
 ;; flycheck syntax checking setup
 (use-package flycheck
   :ensure t
+  :diminish flycheck-mode
   :init
   (global-flycheck-mode t))
-
-(use-package flycheck-joker ;; flycheck for clojure
-  :ensure t)
 
 ;; lsp-mode setup
 (defun kiwib0y/lsp-mode-setup ()
