@@ -197,9 +197,7 @@
 
 ;; flycheck syntax checking setup
 (use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode t))
+  :ensure t)
 
 (use-package flycheck-joker ;; flycheck for clojure
   :ensure t)
