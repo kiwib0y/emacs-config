@@ -95,11 +95,13 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; scroll only by half
-(use-package view
-  :bind
-  ("C-v" . View-scroll-half-page-forward)
-  ("M-v" . View-scroll-half-page-backward))
+;; scrolling smoothly
+(use-package good-scroll
+  :ensure t
+  :config
+  (global-set-key (kbd "C-v") #'good-scroll-up)
+  (global-set-key (kbd "M-v") #'good-scroll-down)
+  (good-scroll-mode 1))
 
 (use-package ivy
   :diminish
