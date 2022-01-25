@@ -62,6 +62,7 @@
 ;; relative line numbers activation on a global scale
 (defvar display-line-numbers-type)
 (setq display-line-numbers-type 'relative)
+(setq display-line-numbers-width 4)
 (global-display-line-numbers-mode t)
 
 ;; line-numbers set up for different modes
