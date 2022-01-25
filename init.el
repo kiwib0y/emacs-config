@@ -50,6 +50,9 @@
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
 (load custom-file)
 
+;; don't ask for symbolic links
+(setq vc-follow-symlinks t)
+
 ;; set tabs to be 2 spaces
 (setq tab-width 2)
 (setq-default indent-tabs-mode t)
