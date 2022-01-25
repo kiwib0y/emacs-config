@@ -129,6 +129,9 @@
   (ivy-prescient-mode 1)
   (prescient-persist-mode 1))
 
+;; hide annoying modes in modeline
+(use-package diminish)
+
 (use-package all-the-icons
   :ensure t)
 
