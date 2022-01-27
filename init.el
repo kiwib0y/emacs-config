@@ -167,7 +167,8 @@
   :custom
   (doom-modeline-lsp t)
   (doom-modeline-minor-modes t)
-  (doom-modeline-mode-height 15))
+  (doom-modeline-mode-height 15)
+  (doom-modeline-buffer-modification-icon nil))
 
 (setq doom-modeline-buffer-file-name-style 'auto)
 
