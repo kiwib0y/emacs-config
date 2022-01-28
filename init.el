@@ -62,6 +62,14 @@
   (set-face-attribute 'fixed-pitch nil
 		      :font "DejaVu Sans Mono" :height kiwib0y/font-sizes))
 
+;; daemon frame setup
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+	      (lambda (frame)
+		(with-selected-frame frame
+		  (kiwib0y/font-face))))
+    (kiwib0y/font-face))
+
 ;; set tabs to be 2 spaces
 (setq tab-width 2)
 (setq-default indent-tabs-mode t)
