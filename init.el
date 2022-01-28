@@ -53,6 +53,15 @@
 ;; don't ask for symbolic links
 (setq vc-follow-symlinks t)
 
+;; fonts configuration
+(defvar kiwib0y/font-sizes 120)
+
+(defun kiwib0y/font-face ()
+  (set-face-attribute 'default nil
+		      :font "DejaVu Sans Mono" :height kiwib0y/font-sizes)
+  (set-face-attribute 'fixed-pitch nil
+		      :font "DejaVu Sans Mono" :height kiwib0y/font-sizes))
+
 ;; set tabs to be 2 spaces
 (setq tab-width 2)
 (setq-default indent-tabs-mode t)
