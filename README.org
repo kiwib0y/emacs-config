@@ -9,7 +9,9 @@ This is a configuration file that includes all of my personal changes and improv
 Everything that I wrote here is ment to be in the =.emacs= or =init.el= file.
 Enjoy and feel free to add on new content.
 
-* Features that I added on with time
+* Installation
+To use my configuration clone the repository and put the =init.el= in your =~/.emacs.d/= folder.
+
 
 ** Header
 This is an updated version of my emacs header.
