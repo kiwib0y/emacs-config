@@ -68,7 +68,7 @@
 	      (lambda (frame)
 		(with-selected-frame frame
 		  (kiwib0y/font-face))))
-    (kiwib0y/font-face))
+  (kiwib0y/font-face))
 
 ;; set tabs to be 2 spaces
 (setq tab-width 2)
