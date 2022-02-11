@@ -58,9 +58,9 @@
 
 (defun kiwib0y/font-face ()
   (set-face-attribute 'default nil
-		      :font "DejaVu Sans Mono" :height kiwib0y/font-sizes)
+		      :font "Hack" :height kiwib0y/font-sizes)
   (set-face-attribute 'fixed-pitch nil
-		      :font "DejaVu Sans Mono" :height kiwib0y/font-sizes))
+		      :font "Hack" :height kiwib0y/font-sizes))
 
 ;; daemon frame setup
 (if (daemonp)
