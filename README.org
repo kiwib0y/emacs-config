@@ -17,7 +17,7 @@ To use my configuration clone the repository and put the =init.el= in your =~/.e
 ** Header
 This is an updated version of my emacs header.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 
   (blink-cursor-mode -1)          ;; Disable cursor blink
   (set-fringe-mode 8)             ;; Set the optimal fringe
