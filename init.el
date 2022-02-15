@@ -344,7 +344,8 @@
   :config
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook #'company-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode))
+  (add-hook 'clojure-mode-hook #'subword-mode)
+  (require 'flycheck-clj-kondo))
 
 (use-package inf-clojure
   :ensure t
