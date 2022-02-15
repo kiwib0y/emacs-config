@@ -233,6 +233,9 @@
 (use-package flycheck-joker ;; flycheck for clojure
   :ensure t)
 
+(use-package flycheck-clj-kondo
+  :ensure t)
+
 ;; lsp-mode setup
 (defun kiwib0y/lsp-mode-setup ()
   "Here is my lsp-mode-setup function."
