@@ -28,7 +28,8 @@ This is an updated version of my emacs header.
   (show-paren-mode 1)             ;; Show global parenthesis on all buffers
   (global-hl-line-mode 1)         ;; Highlight current line
 
-#+END_SRC
+#+end_src
+
 
 ** Tabs
 I set tab width to 2.
