@@ -213,12 +213,12 @@ org-mode with this setup
 
 
 
-#+END_SRC
+#+end_src
 
 This is how I format org-mode through setting the
 column width and I set the text to be in the center
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 
   (defun kiwib0y/org-mode-visual-fill ()
     (setq visual-fill-column-width 120
@@ -228,11 +228,11 @@ column width and I set the text to be in the center
   (use-package visual-fill-column
     :hook (org-mode . kiwib0y/org-mode-visual-fill))
 
-#+END_SRC
+#+end_src
 
 I put my org-agenda files in a separate folder
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   ;; org-mode agenda setup
   (setq org-agenda-files
         '("~/.emacs.d/OrgFiles/Tasks.org"))
