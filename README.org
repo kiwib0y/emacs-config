@@ -31,6 +31,29 @@ This is an updated version of my emacs header.
 
 #+end_src
 
+** Font configuration
+I recently started using Hack as font with size of 12.
+
+#+begin_src emacs-lisp
+
+  ;; fonts configuration
+  (defvar kiwib0y/font-sizes 120)
+
+  (defun kiwib0y/font-face ()
+    (set-face-attribute 'default nil
+                        :font "Hack" :height kiwib0y/font-sizes)
+    (set-face-attribute 'fixed-pitch nil
+                        :font "Hack" :height kiwib0y/font-sizes))
+
+  ;; daemon frame setup
+  (if (daemonp)
+      (add-hook 'after-make-frame-functions
+                (lambda (frame)
+                  (with-selected-frame frame
+                    (kiwib0y/font-face))))
+    (kiwib0y/font-face))
+
+#+end_src
 
 ** Tabs
 I set tab width to 2.
