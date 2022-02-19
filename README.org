@@ -68,8 +68,8 @@ I set tab width to 2.
    #+END_SRC
 
 ** Relative line numbers
-   I prefer relative numbers instead of static ones.
-   That way I can jump through the files with ease.
+I prefer relative numbers instead of static ones.
+That way I can jump between lines easier.
 
 
    #+BEGIN_SRC emacs-lisp
