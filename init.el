@@ -54,7 +54,7 @@
 (setq vc-follow-symlinks t)
 
 ;; fonts configuration
-(defvar kiwib0y/font-sizes 120)
+(defvar kiwib0y/font-sizes 110)
 
 (defun kiwib0y/font-face ()
   (set-face-attribute 'default nil
