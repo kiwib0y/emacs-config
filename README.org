@@ -245,8 +245,8 @@ I put my org-agenda files in a separate folder
 Check this guy's github page for more info [[https://github.com/sabof/org-bullets][here]]
 
 ** Essential features
-   Here is a list of some small but essential features I added for a better experience 
-   using emacs.
+Here is a list of some small but essential features I added for a better experience 
+using emacs.
 *** View by half page
     
     #+BEGIN_SRC emacs-lisp
@@ -269,16 +269,16 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
 
     #+END_SRC
 
-    In order to work properly just run the following command
-    or refer to the original repos here [[https://github.com/seagle0128/doom-modeline][doom-modeline's page]] / [[https://github.com/domtronn/all-the-icons.el#installation][all-the-icons installation]].
+In order to work properly just run the following command
+or refer to the original repos here [[https://github.com/seagle0128/doom-modeline][doom-modeline's page]] / [[https://github.com/domtronn/all-the-icons.el#installation][all-the-icons installation]].
 
     #+BEGIN_SRC 
     M-x all-the-icons-install-fonts
     #+END_SRC
 
 *** Ivy completion and ivy-rich
-    This installs counsel and swiper as well.
-    For futher info check [[https://github.com/abo-abo/swiper][Swiper's github page.]]
+This installs counsel and swiper as well.
+For futher info check [[https://github.com/abo-abo/swiper][Swiper's github page.]]
 
     #+BEGIN_SRC emacs-lisp
 
@@ -298,7 +298,8 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
     #+END_SRC
 
 *** Which key 
-    Explain what every key binding does in a simple way
+Explain what every key binding does in a simple way
+
 
     #+BEGIN_SRC emacs-lisp 
  
@@ -311,9 +312,8 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
     #+END_SRC
 
 ** Theme
-   I use the dracula theme and here's how that looks in my .emacs file.
-   You can get the dracula theme from [[https://draculatheme.com/emacs/][dracula theme for emacs]].
-   #+BEGIN_SRC emacs-lisp
+I use the dracula theme and here's how that looks in my .emacs file.
+You can get the dracula theme from [[https://draculatheme.com/emacs/][dracula theme for emacs]].
 
      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
      (load-theme 'dracula t)
@@ -329,6 +329,8 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
      (load-theme 'antim t)
    #+END_SRC
+I am also developing my own theme called the Antim theme. It's
+what I currently am mostly working on
 
 ** LSP-Mode
 An important feature for completion and code refactoring
@@ -370,9 +372,10 @@ An important feature for completion and code refactoring
      (use-package all-the-icons-dired
        :hook (dired-mode . all-the-icons-dired-mode))
    #+END_SRC
+A better interface and keybindings for dired
 ** CIDER
-   This is the Clojure Interactive Development Environment
-   and more information can be found here [[https://github.com/clojure-emacs/cider][cider on github]] and here [[https://cider.mx/][cider's website]]
+This is the Clojure Interactive Development Environment
+and more information can be found here [[https://github.com/clojure-emacs/cider][cider on github]] and here [[https://cider.mx/][cider's website]]
 
    #+BEGIN_SRC emacs-lisp
      ;; clojure config
@@ -381,8 +384,8 @@ An important feature for completion and code refactoring
    #+END_SRC
 
 ** PDF-view
-   Added a pdf-tools section to read PDFs in emacs.
-   For additional information check [[https://github.com/politza/pdf-tools][pdf-tools' page]]
+Added a pdf-tools section to read PDFs in emacs.
+For additional information check [[https://github.com/politza/pdf-tools][pdf-tools' page]]
    
    #+BEGIN_SRC emacs-lisp
      (use-package pdf-tools
@@ -395,8 +398,8 @@ An important feature for completion and code refactoring
        (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
    #+END_SRC
 ** Emojify emacs
-   Added this package to see emojis
-   in Emacs
+Added this package to see emojis
+in Emacs
 
    #+BEGIN_SRC emacs-lisp
 
@@ -423,3 +426,9 @@ An important feature for completion and code refactoring
          (setq projectile-project-search-path '("~/Github")))
        (setq projectile-switch-project-action #'projectile-dired))
    #+END_SRC
+Projectile is a project interaction library for Emacs.
+Its goal is to provide a nice set of features operating on a project level
+without introducing external dependencies (when feasible).
+
+More information can be found [[https://github.com/bbatsov/projectile][here]]
+
