@@ -260,21 +260,42 @@ using emacs.
 
 #+end_src
 
-*** Doom emacs mode line
+** Doom emacs mode line
 
+This is my current doom-modeline configuration.
 
-      (use-package doom-modeline
-        :ensure t
-        :init   (doom-modeline-mode 1)
-        :custom ((doom-modeline-mode-height 12)))
+#+begin_src emacs-lisp
+
+  (use-package doom-modeline
+    :ensure t
+    :hook (after-init . doom-modeline-mode)
+    :custom-face
+    (mode-line ((t (:height 1.0))))
+    (mode-line-inactive ((t (:height 1.0))))
+    :custom
+    (doom-modeline-lsp t)
+    (doom-modeline-minor-modes t)
+    (doom-modeline-height 30)
+    (doom-modeline-buffer-state-icon t)
+    (doom-modeline-bar-width 8)
+    (doom-modeline-buffer-modification-icon nil))
 
 #+end_src
 
 In order to work properly just run the following command
 or refer to the original repos here [[https://github.com/seagle0128/doom-modeline][doom-modeline's page]] / [[https://github.com/domtronn/all-the-icons.el#installation][all-the-icons installation]].
 
-#+begin_src 
-    M-x all-the-icons-install-fonts
+=M-x all-the-icons-install-fonts=
+
+
+Minions mode for the mode line.
+#+begin_src emacs-lisp
+
+  (use-package minions
+    :hook (doom-modeline-mode . minions-mode))
+
+#+end_src
+
 
 *** Ivy completion and ivy-rich
 This installs counsel and swiper as well.
