@@ -296,24 +296,24 @@ Minions mode for the mode line.
 #+end_src
 
 
-*** Ivy completion and ivy-rich
+** Ivy completion and ivy-rich
 This installs counsel and swiper as well.
 For futher info check [[https://github.com/abo-abo/swiper][Swiper's github page.]]
 
 #+begin_src emacs-lisp
 
-      (use-package ivy
-              :diminish
-              :bind
-                   ("M-x" . 'counsel-M-x)
-                   ("C-s" . 'swiper)
-                   ("C-x C-f" . 'counsel-find-file)
-              :config
-              (ivy-mode 1))
+  (use-package ivy
+    :diminish
+    :bind
+    ("M-x" . 'counsel-M-x)
+    ("C-s" . 'swiper)
+    ("C-x C-f" . 'counsel-find-file)
+    :config
+    (ivy-mode 1))
 
-      (use-package ivy-rich
-        :init
-        (ivy-rich-mode 1))
+  (use-package ivy-rich
+    :init
+    (ivy-rich-mode 1))
 
 #+end_src
 
