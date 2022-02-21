@@ -334,15 +334,16 @@ Explain what every key binding does in a simple way
 #+end_src
 
 ** Theme
-I use the dracula theme and here's how that looks in my .emacs file.
-You can get the dracula theme from [[https://draculatheme.com/emacs/][dracula theme for emacs]].
+A few months ago I've started using the zenburn theme and I doubt that
+I will move away from it anytime soon. Check more about it [[https://github.com/bbatsov/zenburn-emacs][here]].
+
 #+begin_src emacs-lisp
 
-     (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-     (load-theme 'dracula t)
-     (setq dracula-use-24-bit-colors-on-256-colors-terms t)
-     (unless (display-graphic-p)
-       (set-face-background 'default "black" nil))
+  (use-package zenburn-theme
+    :ensure t
+    :config
+    (setq zenburn-scale-org-headlines t)
+    (load-theme 'zenburn t))
 
 #+end_src
 
