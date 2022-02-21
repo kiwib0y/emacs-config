@@ -430,6 +430,7 @@ in Emacs
        :hook (after-init . global-emojify-mode))
 
 #+end_src
+
 ** Projectile
 Projectile is a project interaction library for Emacs.
 Its goal is to provide a nice set of features operating on a project level
