@@ -246,14 +246,17 @@ Check this guy's github page for more info [[https://github.com/sabof/org-bullet
 ** Essential features
 Here is a list of some small but essential features I added for a better experience 
 using emacs.
-*** View by half page
+** The good-scroll package
     
 #+begin_src emacs-lisp
 
-      (use-package view
-        :bind
-        ("C-v" . View-scroll-half-page-forward)
-        ("M-v" . View-scroll-half-page-backward))
+  ;; scrolling smoothly
+  (use-package good-scroll
+    :ensure t
+    :config
+    (global-set-key (kbd "C-v") #'good-scroll-up)
+    (global-set-key (kbd "M-v") #'good-scroll-down)
+    (good-scroll-mode 1))
 
 #+end_src
 
