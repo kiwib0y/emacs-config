@@ -32,12 +32,12 @@ This is an updated version of my emacs header.
 #+end_src
 
 ** Font configuration
-I recently started using Hack as font with size of 12.
+I recently started using the Hack font size 11.
 
 #+begin_src emacs-lisp
 
   ;; fonts configuration
-  (defvar kiwib0y/font-sizes 120)
+  (defvar kiwib0y/font-sizes 110)
 
   (defun kiwib0y/font-face ()
     (set-face-attribute 'default nil
