@@ -215,7 +215,9 @@ org-mode with this setup
 #+end_src
 
 This is how I format org-mode through setting the
-column width and I set the text to be in the center
+column width and I set the text to be in the center.
+
+Check this guy's [[https://github.com/sabof/org-bullets][github page]] for more information.
 
 #+begin_src emacs-lisp
 
