@@ -431,27 +431,21 @@ in Emacs
 
 #+end_src
 ** Projectile
-   Projectile is a project interaction library for Emacs.
-   Its goal is to provide a nice set of features operating on a project level
-   without introducing external dependencies (when feasible).
-
-   More information can be found [[https://github.com/bbatsov/projectile][here]]
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package projectile
-       :diminish projectile-mode
-       :config (projectile-mode)
-       :custom ((projectile-completion-system 'ivy))
-       :bind-keymap
-       ("C-c p" . projectile-command-map)
-       :init
-       (when (file-directory-p "~/Github") ;; use a project directory
-         (setq projectile-project-search-path '("~/Github")))
-       (setq projectile-switch-project-action #'projectile-dired))
-   #+END_SRC
 Projectile is a project interaction library for Emacs.
 Its goal is to provide a nice set of features operating on a project level
 without introducing external dependencies (when feasible).
 
 More information can be found [[https://github.com/bbatsov/projectile][here]]
 
+#+begin_src emacs-lisp
+  (use-package projectile
+    :diminish projectile-mode
+    :config (projectile-mode)
+    :custom ((projectile-completion-system 'ivy))
+    :bind-keymap
+    ("C-c p" . projectile-command-map)
+    :init
+    (when (file-directory-p "~/Github") ;; use a project directory
+      (setq projectile-project-search-path '("~/Github")))
+    (setq projectile-switch-project-action #'projectile-dired))
+#+end_src
