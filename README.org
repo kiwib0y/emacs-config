@@ -400,11 +400,17 @@ A better interface and keybindings for dired
 This is the Clojure Interactive Development Environment
 and more information can be found here [[https://github.com/clojure-emacs/cider][cider on github]] and here [[https://cider.mx/][cider's website]]
 
-   #+BEGIN_SRC emacs-lisp
-     ;; clojure config
-     (use-package cider
-       :ensure t)
-   #+END_SRC
+#+begin_src emacs-lisp
+  ;; clojure config
+  (use-package cider
+    :ensure t
+    :config
+    (setq nrepl-log-messages nil)
+    (setq cider-repl-display-help-banner nil)
+    (add-hook 'cider-repl-mode-hook #'company-mode)
+    (add-hook 'cider-repl-mode-hook #'paredit-mode))
+
+#+end_src
 
 ** PDF-view
 Added a pdf-tools section to read PDFs in emacs.
