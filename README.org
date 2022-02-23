@@ -332,18 +332,16 @@ For futher info check [[https://github.com/abo-abo/swiper][Swiper's github page.
 
 #+end_src
 
-*** Which key 
+** Which key
 Explain what every key binding does in a simple way
 
 #+begin_src emacs-lisp 
 
-    #+BEGIN_SRC emacs-lisp 
- 
-      (use-package which-key
-        :init (which-key-mode)
-        :diminish which-key-mode
-        :config
-        (setq which-key-idle-delay 0.6)) ;; This is what I've chosen as a delay
+  (use-package which-key
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 0.6)) ;; This is what I've chosen as a delay
 
 #+end_src
 
