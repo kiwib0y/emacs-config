@@ -102,14 +102,23 @@ Emacs look better.
 #+end_src
 
 ** The package archives
-I use only elpa and melpa packages
+I use a few external package archives like
+melpa, melpa-stable, org etc.
+You almost always would want to have them enabled
+in order to download third-party packages.
+
+*NOTE:* Bear in mind that some of the archives work
+with the version I'm currently using. There might
+be issues when trying to connect to an archive
+while using Emacs versions older than 27.
 
 #+begin_src emacs-lisp
 
   (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/")
-               '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+                           ("melpa" . "https://melpa.org/packages/")
+                           ("elpa" . "https://elpa.gnu.org/packages/")
+                           ("org" . "https://orgmode.org/elpa/")))
   ;; Check package sources like so and refresh
   (package-initialize)
   (unless package-archive-contents
