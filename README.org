@@ -16,6 +16,8 @@ To use my configuration clone the repository and put the =init.el= in your =~/.e
 
 ** Header
 This is an updated version of my emacs header.
+It will make emacs prettier and should provide a more friendly
+environment for Emacs newcomers.
 
 #+begin_src emacs-lisp
 
