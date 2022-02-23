@@ -85,6 +85,8 @@ That way I can jump between lines easier.
    
 ** Numberless modes
 I don't like seeing rows in these modes.
+You might not need that but in my opinion it makes
+Emacs look better.
 
 #+begin_src emacs-lisp
 
