@@ -126,7 +126,7 @@ while using Emacs versions older than 27.
 
 #+end_src
 
-*** Added use-package as well and turned it on by default
+** Added use-package as well and turned it on by default
 use-package is a better archive management macro.
 [[https://github.com/jwiegley/use-package][Check its github page for more info]].
 
