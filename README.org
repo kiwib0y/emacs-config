@@ -35,6 +35,8 @@ environment for Emacs newcomers.
 
 ** Font configuration
 I recently started using the Hack font size 11.
+This will be useful if you want to use the Emacs server
+through the Emacs Daemon.
 
 #+begin_src emacs-lisp
 
