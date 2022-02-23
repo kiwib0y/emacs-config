@@ -60,12 +60,12 @@ through the Emacs Daemon.
 #+end_src
 
 ** Tabs
-I set tab width to 2.
+I set tab width to 4. Just a personal preference.
 
 #+begin_src emacs-lisp
 
-  ;; set tabs to be 2 spaces
-  (setq tab-width 2)
+  ;; set tabs to be 4 spaces
+  (setq tab-width 4)
   (setq-default indent-tabs-mode t)
   (setq tab-always-indent 'complete)
 
