@@ -103,9 +103,9 @@
 ;; initialize package source
 (require 'package)
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
 			 ("elpa" . "https://elpa.gnu.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-                         ("melpa" . "https://melpa.org/packages/")))
+			 ("org" . "https://orgmode.org/elpa/")))
 
 ;; check package sources
 (package-initialize)
