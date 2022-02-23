@@ -156,7 +156,7 @@
   :ensure nil
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
-  :custom ((dired-listing-switches "-agho --group-directories-first"))
+  :custom ((dired-listing-switches "-laGh1v --group-directories-first"))
   :config
   (define-key dired-mode-map (kbd "f") 'dired-single-buffer)
   (define-key dired-mode-map (kbd "b") 'dired-single-up-directory))
