@@ -429,24 +429,25 @@ and more information can be found here [[https://github.com/clojure-emacs/cider]
 Added a pdf-tools section to read PDFs in emacs.
 For additional information check [[https://github.com/politza/pdf-tools][pdf-tools' page]]
    
-   #+BEGIN_SRC emacs-lisp
-     (use-package pdf-tools
-       :pin manual
-       :config
-       (pdf-tools-install)
-       (setq-default pdf-view-display-size 'fit-width)
-       (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-       :custom
-       (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
-   #+END_SRC
+#+begin_src emacs-lisp
+  (use-package pdf-tools
+    :pin manual
+    :config
+    (pdf-tools-install)
+    (setq-default pdf-view-display-size 'fit-width)
+    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+    :custom
+    (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+#+end_src
+
 ** Emojify emacs
 Added this package to see emojis
 in Emacs
 
 #+begin_src emacs-lisp
 
-     (use-package emojify
-       :hook (after-init . global-emojify-mode))
+  (use-package emojify
+    :hook (after-init . global-emojify-mode))
 
 #+end_src
 
