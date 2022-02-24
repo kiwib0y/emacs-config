@@ -48,7 +48,7 @@
 
 (setq custom-file
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
-(load custom-file)
+(load custom-file 'noerror 'nomessage)
 
 ;; don't ask for symbolic links
 (setq vc-follow-symlinks t)
