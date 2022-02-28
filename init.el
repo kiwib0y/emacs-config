@@ -358,8 +358,9 @@
 (use-package cider
   :ensure t
   :config
-  (setq nrepl-log-messages t)
-  (setq cider-repl-display-help-banner nil)
+  (setq nrepl-log-messages nil)
+  (setq nrepl-hide-special-buffers t)
+  (setq cider-repl-display-help-banner t)
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
