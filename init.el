@@ -186,7 +186,7 @@
   (doom-modeline-minor-modes t)
   (doom-modeline-height 30)
   (doom-modeline-buffer-state-icon t)
-  (doom-modeline-bar-width 8)
+  (doom-modeline-bar-width 4)
   (doom-modeline-buffer-modification-icon nil))
 
 (setq doom-modeline-buffer-file-name-style 'auto)
