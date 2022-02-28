@@ -122,8 +122,8 @@
 (use-package good-scroll
   :ensure t
   :config
-  (global-set-key (kbd "C-v") #'good-scroll-up)
-  (global-set-key (kbd "M-v") #'good-scroll-down)
+  (global-set-key (kbd "<next>") #'good-scroll-up)
+  (global-set-key (kbd "<prior>") #'good-scroll-down)
   (good-scroll-mode 1))
 
 (use-package ivy
