@@ -33,7 +33,7 @@
 ;;; Code:
 
 (blink-cursor-mode -1)          ;; Disable cursor blink
-(set-fringe-mode 9)             ;; Set the optimal fringe
+(set-fringe-mode 5)             ;; Set the optimal fringe
 (tool-bar-mode -1)              ;; Disable the toolbar
 (scroll-bar-mode -1)            ;; Disable the scrollbar
 (electric-pair-mode 1)          ;; Electric pair parenthesis
