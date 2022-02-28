@@ -360,7 +360,8 @@
   :config
   (setq nrepl-log-messages nil)
   (setq nrepl-hide-special-buffers t)
-  (setq cider-repl-display-help-banner t)
+  (setq cider-repl-clear-help-banner t)
+  (setq cider-repl-display-help-banner nil)
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
