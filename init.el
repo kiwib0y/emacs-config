@@ -305,7 +305,7 @@
 
 (use-package cargo-mode
   :config
-  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+  (add-hook 'rust-mode-hook #'cargo-minor-mode))
 
 ;; golang mode setup
 (use-package go-mode
