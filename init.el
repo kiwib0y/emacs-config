@@ -299,7 +299,7 @@
   (add-hook 'lsp-rust-server #'rust-analyzer)
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
-  (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+  (define-key rust-mode-map (kbd "<tab>") #'company-indent-or-complete-common)
   (setq rust-format-on-save t)
   (setq rust-indent-offset 4))
 
