@@ -160,9 +160,11 @@
   :custom ((dired-listing-switches "-laGh1v --group-directories-first"))
   :config
   (define-key dired-mode-map (kbd "f") 'dired-single-buffer)
-  (define-key dired-mode-map (kbd "b") 'dired-single-up-directory))
-
-(use-package dired-single)
+  (define-key dired-mode-map (kbd "b") 'dired-single-up-directory)
+  (add-hook 'dired-mode-hook
+	    (lambda ()
+	      (interactive)
+	      (dired-hide-details-mode 1))))
 
 (use-package dired-single
   :defer t)
