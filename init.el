@@ -159,6 +159,8 @@
   :bind (("C-x C-j" . dired-jump))
   :custom ((dired-listing-switches "-laGh1v --group-directories-first"))
   :config
+  (setq delete-by-moving-to-trash t)
+  (setq dired-hide-details-hide-symlink-targets nil)
   (define-key dired-mode-map (kbd "f") 'dired-single-buffer)
   (define-key dired-mode-map (kbd "b") 'dired-single-up-directory)
   (add-hook 'dired-mode-hook
