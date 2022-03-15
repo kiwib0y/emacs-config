@@ -33,15 +33,15 @@
 ;;; Code:
 
 (blink-cursor-mode -1)          ;; Disable cursor blink
-(set-fringe-mode 5)             ;; Set the optimal fringe
-(tool-bar-mode -1)              ;; Disable the toolbar
-(scroll-bar-mode -1)            ;; Disable the scrollbar
-(electric-pair-mode 1)          ;; Electric pair parenthesis
 (column-number-mode 1)          ;; Add column number
-(show-paren-mode 1)             ;; Show global parenthesis on all buffers
-(global-hl-line-mode 1)         ;; Highlight current line
 (delete-selection-mode 1)       ;; Better paste over region behavior
+(electric-pair-mode 1)          ;; Electric pair parenthesis
+(global-hl-line-mode 1)         ;; Highlight current line
 (save-place-mode 1)             ;; Remember the cursor location
+(scroll-bar-mode -1)            ;; Disable the scrollbar
+(set-fringe-mode 5)             ;; Set the optimal fringe
+(show-paren-mode 1)             ;; Show global parenthesis on all buffers
+(tool-bar-mode -1)              ;; Disable the toolbar
 
 
 (setq inhibit-startup-message t)
