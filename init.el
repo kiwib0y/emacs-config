@@ -41,6 +41,7 @@
 (show-paren-mode 1)             ;; Show global parenthesis on all buffers
 (global-hl-line-mode 1)         ;; Highlight current line
 (delete-selection-mode 1)       ;; Better paste over region behavior
+(save-place-mode 1)             ;; Remember the cursor location
 
 
 (setq inhibit-startup-message t)
