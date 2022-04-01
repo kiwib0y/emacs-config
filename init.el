@@ -72,8 +72,8 @@
   (kiwib0y/font-face))
 
 ;; set tabs to be 2 spaces
-(setq tab-width 2)
-(setq-default indent-tabs-mode t)
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
 
 ;; set visible notification bell and disable annoying ringing
