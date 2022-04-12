@@ -136,6 +136,8 @@
   :config
   (ivy-mode 1))
 
+;; test commit
+
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
