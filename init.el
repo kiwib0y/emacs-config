@@ -405,6 +405,14 @@
   (setq-default pdf-view-display-size 'fit-width)
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
 
+;; yaml setup
+(use-package yaml-mode
+  :ensure t
+  :mode (("\\.yml\\'" . yaml-mode)
+         ("\\.yaml\\'" . yaml-mode))
+  :config
+  (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent))
+
 ;; markdown setup
 (use-package markdown-mode
   :ensure t
