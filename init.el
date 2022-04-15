@@ -474,7 +474,7 @@
 
 (defun kiwib0y/org-mode-visual-fill ()
   "Here is my org-mode-visual-fill function."
-  (setq visual-fill-column-width 120
+  (setq visual-fill-column-width 100
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
