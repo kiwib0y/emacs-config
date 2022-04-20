@@ -434,6 +434,8 @@
   :config
   (setq org-ellipsis "↴")
   (setq org-hide-emphasis-markers t)
+  (setq org-agenda-files
+        '("~/.emacs.d/OrgFiles/Schedule.org"))
 
   (org-babel-do-load-languages
    'org-babel-load-languages
