@@ -490,18 +490,10 @@
 ;; (add-to-list 'load-path
 ;;              org-agenda-files)
 
-(use-package solarized-theme
+
+(use-package zenburn-theme
   :ensure t
   :config
-  (setq solarized-distinct-fringe-background t)
-  (setq x-underline-at-descent-line nil)
-  (setq-default solarized-high-contrast-mode-line t)
-  (setq solarized-emphasize-indicators nil)
-  (load-theme 'solarized-light t))
-
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :config
-;;   (setq zenburn-scale-org-headlines t)
-;;   (load-theme 'zenburn t))
+  (setq zenburn-scale-org-headlines t)
+  (load-theme 'zenburn t))
 ;;; init.el ends here
