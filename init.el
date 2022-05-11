@@ -202,7 +202,8 @@
   :ensure t)
 
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :config
+  (add-hook 'prog-mode #'rainbow-delimiters-mode))
 
 ;; explain what key does
 (use-package which-key
