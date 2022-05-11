@@ -434,8 +434,11 @@
   :config
   (setq org-ellipsis "↴")
   (setq org-hide-emphasis-markers t)
-  (setq org-agenda-files
-        '("~/.emacs.d/OrgFiles/Schedule.org"))
+  (setq org-export-latex-listings t)
+  (setq org-latex-listings 'minted
+        org-latex-packages-alist '(("" "minted")))
+  (setq org-src-fontify-natively t)
+
 
   (org-babel-do-load-languages
    'org-babel-load-languages
