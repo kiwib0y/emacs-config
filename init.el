@@ -452,6 +452,9 @@
 
 (require 'org-tempo)
 
+(use-package org-appear
+  :hook (org-mode . org-appear-mode))
+
 (use-package org-tree-slide
   :custom
   (org-image-actual-width nil))
@@ -489,7 +492,6 @@
 
 ;; (add-to-list 'load-path
 ;;              org-agenda-files)
-
 
 (use-package zenburn-theme
   :ensure t
