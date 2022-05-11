@@ -379,8 +379,8 @@
   :bind
   (:map company-active-map
         ("<tab>" . company-complete-selection)
-        ("M-n" . company-select-next)
-        ("M-p" . company-select-previous))
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous))
   (:map lsp-mode-map
         ("<tab>" . company-indent-or-complete-common))
   :custom
