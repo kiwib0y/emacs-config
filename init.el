@@ -254,7 +254,8 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :custom
-  (lsp-ui-doc-position 'at-point))
+  (lsp-ui-doc-position 'at-point)
+  (lsp-ui-sideline-show-hover t))
 
 (use-package lsp-treemacs
   :after lsp-mode)
