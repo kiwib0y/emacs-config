@@ -293,6 +293,12 @@
   :config
   (pyvenv-mode 1))
 
+(use-package rustic
+  :ensure t
+  :bind (:map rustic-mode-map
+	      ("M-j" . lsp-ui-imenu)
+	      ("M-?" . lsp-find-references)))
+
 ;; rust programming setup
 (use-package rust-mode
   :hook (rust-mode . lsp-deferred)
