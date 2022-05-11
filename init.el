@@ -210,7 +210,8 @@
   :ensure t)
 
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :config
+  (add-hook 'prog-mode #'rainbow-delimiters-mode))
 
 ;; explain what key does
 (use-package which-key
@@ -261,7 +262,8 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :custom
-  (lsp-ui-doc-position 'at-point))
+  (lsp-ui-doc-position 'at-point)
+  (lsp-ui-sideline-show-hover t))
 
 (use-package lsp-treemacs
   :after lsp-mode)
@@ -299,6 +301,12 @@
 (use-package pyvenv
   :config
   (pyvenv-mode 1))
+
+(use-package rustic
+  :ensure t
+  :bind (:map rustic-mode-map
+	      ("M-j" . lsp-ui-imenu)
+	      ("M-?" . lsp-find-references)))
 
 ;; rust programming setup
 (use-package rust-mode
