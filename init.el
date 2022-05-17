@@ -430,7 +430,14 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
-;; org-mode setup
+;; theme
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (setq zenburn-scale-org-headlines t)
+  (load-theme 'zenburn t))
+
+;; ORG
 (defun kiwib0y/org-mode-setup ()
   "My personal org mode setup function."
   (org-indent-mode t)
@@ -503,10 +510,4 @@
 
 ;; (add-to-list 'load-path
 ;;              org-agenda-files)
-
-(use-package zenburn-theme
-  :ensure t
-  :config
-  (setq zenburn-scale-org-headlines t)
-  (load-theme 'zenburn t))
 ;;; init.el ends here
