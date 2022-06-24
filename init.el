@@ -140,7 +140,7 @@
   :init
   (ivy-rich-mode 1))
 
-;; a useful tool for the =M-x= mode
+;; a useful tool for the M-x mode
 (use-package ivy-prescient
   :after counsel
   :config
