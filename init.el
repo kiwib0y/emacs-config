@@ -127,6 +127,10 @@
   (global-set-key (kbd "M-v") #'good-scroll-down)
   (good-scroll-mode 1))
 
+(use-package savehist
+  :init
+  (savehist-mode))
+
 (use-package ivy
   :diminish
   :bind
