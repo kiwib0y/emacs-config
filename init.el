@@ -284,10 +284,6 @@
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
-;; lsp-dart mode setup
-(use-package lsp-dart
-  :ensure t
-  :hook (dart-mode . lsp-mode))
 
 ;; optional flutter packages
 (use-package hover
