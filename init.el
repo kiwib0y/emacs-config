@@ -285,9 +285,6 @@
   :config (dap-auto-configure-mode))
 
 
-;; optional flutter packages
-(use-package hover
-  :ensure t) ;; run app from desktop without emulator
 
 ;; python programming setup
 (use-package python-mode
