@@ -322,13 +322,6 @@
   :config
   (add-hook 'rust-mode-hook #'cargo-minor-mode))
 
-;; golang mode setup
-(use-package go-mode
-  :config
-  (progn
-    (setq gofmt-command "goimports")
-    (add-hook 'before-save-hook 'gofmt-before-save)))
-
 ;; typescript quickstart
 (use-package typescript-mode
   :mode "\\.ts\\'"
