@@ -63,6 +63,9 @@
   (set-face-attribute 'fixed-pitch nil
 		      :font "Hack" :height kiwib0y/font-sizes))
 
+;; Set UTF-8 for easy cross-platform use
+(set-default-coding-systems 'utf-8)
+
 ;; daemon frame setup
 (if (daemonp)
     (add-hook 'after-make-frame-functions
