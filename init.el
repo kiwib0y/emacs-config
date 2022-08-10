@@ -47,6 +47,9 @@
 (setq inhibit-startup-message t)
 (setq ad-redefinition-action 'accept) ;; Remove redefinition warning
 
+;; add this inside of custom-set-variables
+;; '(org-directory "~/Documents/Org")
+;; '(org-agenda-files (list org-directory))
 (setq custom-file
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
