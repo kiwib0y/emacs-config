@@ -174,7 +174,7 @@
   (setq delete-by-moving-to-trash t)
   (setq dired-hide-details-hide-symlink-targets nil)
   (define-key dired-mode-map (kbd "f") 'dired-single-buffer)
-  (define-key dired-mode-map (kbd "b") 'dired-single-up-directory)
+  (define-key dired-mode-map (kbd "b") '(lambda () (interactive) (dired-single-buffer ".."))) ;; 'dired-sinlge-up-directory
   (add-hook 'dired-mode-hook
 	    (lambda ()
 	      (interactive)
