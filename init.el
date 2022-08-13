@@ -167,8 +167,8 @@
   :ensure nil
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
-  :custom ((dired-listing-switches "-laGh1v --group-directories-first"))
   :config
+  (setq dired-listing-switches "-laGh1v --group-directories-first")
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
   (setq delete-by-moving-to-trash t)
