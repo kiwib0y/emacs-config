@@ -290,13 +290,6 @@
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
-  :config
-  (require 'dap-python))
-
-(use-package pyvenv
-  :config
-  (pyvenv-mode 1))
-
 (use-package rustic
   :ensure t
   :bind (:map rustic-mode-map
