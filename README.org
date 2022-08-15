@@ -1,6 +1,6 @@
 #+title: Emacs configuration
 #+author: KiwiB0y
-#+options: num:nil date:nil toc:2
+#+options: num:nil date:nil toc:nil
 
 * Intro
 This is a configuration file that includes all of my personal changes and improvements on the Emacs 27.2
