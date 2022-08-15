@@ -11,6 +11,10 @@ Enjoy and feel free to add on new content.
 
 * Installation
 
+To use my configuration clone the repository and put the =init.el= in your =~/.emacs.d/= folder.
 
+The best way to do that is to create a symbolic link to =~/.emacs.d=
 
+#+begin_src bash
+  ln -s ~/path/to/cloned/emacs.d/init.el ~/.emacs.d/init.el
 #+end_src
