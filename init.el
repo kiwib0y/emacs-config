@@ -137,6 +137,10 @@
   :init
   (savehist-mode))
 
+(use-package windmove
+  :config
+  (windmove-default-keybindings))
+
 (use-package ivy
   :diminish
   :bind
