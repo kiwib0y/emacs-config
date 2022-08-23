@@ -322,6 +322,10 @@
   :config
   (setq typescript-indent-level 2))
 
+(use-package vue-mode
+  :mode "\\.vue\\'"
+  :hook (vue-mode . lsp-defered))
+
 (use-package web-mode
   :ensure t
   :defer t
