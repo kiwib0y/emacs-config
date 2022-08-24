@@ -332,6 +332,9 @@
   (vue-mode . lsp-deferred)
   (vue-mode . vue-html-mode))
 
+(use-package vue-html-mode
+  :ensure t)
+
 (use-package web-mode
   :ensure t
   :defer t
