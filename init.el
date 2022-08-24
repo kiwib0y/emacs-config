@@ -328,7 +328,7 @@
 (use-package vue-mode
   :ensure t
   :mode "\\.vue\\'"
-  :hook 
+  :hook
   (vue-mode . lsp-deferred)
   (vue-mode . vue-html-mode))
 
