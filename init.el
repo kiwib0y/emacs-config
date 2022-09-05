@@ -336,7 +336,7 @@
   (setq vue-indent-level 2))
 
 (use-package vue-html-mode
-  :ensure t)
+  :defer t)
 
 (use-package web-mode
   :ensure t
