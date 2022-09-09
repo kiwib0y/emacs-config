@@ -61,6 +61,7 @@
 (defvar kiwib0y/font-sizes 110)
 
 (defun kiwib0y/font-face ()
+  "Setup all fonts to Hack font."
   (set-face-attribute 'default nil
 		      :font "Hack" :height kiwib0y/font-sizes)
   (set-face-attribute 'fixed-pitch nil
