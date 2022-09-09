@@ -81,6 +81,7 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
+(setq indent-line-function 'insert-tab)
 
 ;; set visible notification bell and disable annoying ringing
 (setq visible-bell 'top-bottom)
