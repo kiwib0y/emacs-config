@@ -314,7 +314,7 @@
   (add-hook 'racer-mode-hook #'company-mode)
   (define-key rust-mode-map (kbd "<tab>") #'company-indent-or-complete-common)
   (setq rust-format-on-save t)
-  (setq rust-indent-offset 4))
+  (setq rust-indent-offset 2))
 
 (use-package cargo-mode
   :config
