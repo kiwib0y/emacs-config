@@ -273,12 +273,25 @@
   (lsp-headerline-breadcrumb-mode))
 
 (use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :hook (lsp-mode . kiwib0y/lsp-mode-setup)
+  :defer t
+  :commands lsp
   :init
   (setq lsp-keymap-prefix "C-c l") ;; Or 'C-l' , 's-l' or the other one
   :config
-  (setq lsp-enable-which-key-integration t))
+  (setq lsp-enable-which-key-integration t)
+  (setq lsp-auto-guess-root nil)
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-enable-folding nil)
+  (setq read-process-output-max (* 1024 1024))
+  (setq lsp-keep-workspace-alive nil)
+  (setq lsp-eldoc-hook nil)
+  :hook ((js-mode
+          js2-mode
+          typescript-mode
+          web-mode
+          c-mode
+          kiwib0y/lsp-mode-setup) . lsp-deferred))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
