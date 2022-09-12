@@ -411,10 +411,12 @@
   :bind
   (:map company-active-map
         ("<tab>" . company-complete-selection)
+        ("TAB" . company-indent-or-complete-common)
         ("C-n" . company-select-next)
         ("C-p" . company-select-previous))
   (:map lsp-mode-map
-        ("<tab>" . company-indent-or-complete-common))
+        ("<tab>" . company-indent-or-complete-common)
+        ("TAB" . company-indent-or-complete-common))
   :custom
   (company-minimum-prefix-length 2)
   (company-idle-delay 0.1)
