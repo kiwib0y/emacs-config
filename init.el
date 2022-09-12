@@ -351,8 +351,8 @@
   (vue-mode . lsp-deferred)
 	:config
 	(setq mmm-submode-decoration-level 0)
-  (setq vue-html-extra-indent 0)
-  (setq vue-indent-level 2))
+  (setq-default vue-html-extra-indent 2)
+  (setq-default vue-indent-level 2))
 
 (use-package vue-html-mode
   :defer t)
