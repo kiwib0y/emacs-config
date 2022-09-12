@@ -516,7 +516,8 @@
     (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
 
 (defun kiwib0y/org-mode-visual-fill ()
-  "Here is my org-mode-visual-fill function."
+  "Center the files for better experience
+   in the visual-fill-column mode."
   (setq visual-fill-column-width 100
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
