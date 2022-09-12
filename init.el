@@ -459,7 +459,7 @@
 
 ;; ORG
 (defun kiwib0y/org-mode-setup ()
-  "My personal org mode setup function."
+  "My personal org mode setup."
   (org-indent-mode t)
   (visual-line-mode 1))
 
