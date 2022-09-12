@@ -268,7 +268,7 @@
 
 ;; lsp-mode setup
 (defun kiwib0y/lsp-mode-setup ()
-  "Here is my lsp-mode-setup function."
+  "Shows the in-project path as breadcrumb."
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
 
