@@ -363,7 +363,10 @@
   :mode ("\\.html\\'"
          "\\.css\\'"
          "\\.php\\'"
-         "\\.js[x]?\\'"))
+         "\\.js[x]?\\'")
+  :config
+  (setq web-mode-script-padding 2)
+  (setq web-mode-style-padding 2))
 
 ;; paredit mode
 (use-package paredit
