@@ -222,7 +222,8 @@
 
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :commands (magit-status magit-get-current-branch))
 
 (use-package htmlize
   :ensure t)
