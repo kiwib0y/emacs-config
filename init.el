@@ -222,7 +222,8 @@
 
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :commands (magit-status magit-get-current-branch))
 
 (use-package htmlize
   :ensure t)
@@ -417,6 +418,9 @@
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
+(use-package terraform-mode
+  :ensure t)
+
 ;; company autocompletion setup
 (use-package company
   :after lsp-mode
@@ -466,7 +470,7 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "markdown"))
 
 ;; theme
 (use-package zenburn-theme
