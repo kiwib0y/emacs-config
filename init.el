@@ -418,6 +418,9 @@
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
+(use-package terraform-mode
+  :ensure t)
+
 ;; company autocompletion setup
 (use-package company
   :after lsp-mode
