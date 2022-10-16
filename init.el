@@ -42,7 +42,7 @@
 (set-fringe-mode 5)             ;; Set the optimal fringe
 (show-paren-mode 1)             ;; Show global parenthesis on all buffers
 (tool-bar-mode -1)              ;; Disable the toolbar
-
+(menu-bar-mode -1)  ;; Disable the menubar
 
 (setq inhibit-startup-message t)
 (setq ad-redefinition-action 'accept) ;; Remove redefinition warning
