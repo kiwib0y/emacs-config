@@ -50,6 +50,11 @@
 ;; add this inside of custom-set-variables
 ;; '(org-directory "~/Documents/Org")
 ;; '(org-agenda-files (list org-directory))
+
+;; store backup files here
+(setq backup-directory-alist
+      '(("." . "~/.emacs.d/emacs-backup")))
+
 (setq custom-file
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
