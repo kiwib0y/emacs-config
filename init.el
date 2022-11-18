@@ -480,6 +480,12 @@
   (setq zenburn-scale-org-headlines t)
   (load-theme 'zenburn t))
 
+(use-package solarized-theme
+  :ensure t
+  :config
+  (setq x-underline-at-descent-line t)
+  (setq solarized-high-contrast-mode-line t))
+
 ;; ORG
 (defun kiwib0y/org-mode-setup ()
   "My personal org mode setup."
