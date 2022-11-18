@@ -50,6 +50,11 @@
 ;; add this inside of custom-set-variables
 ;; '(org-directory "~/Documents/Org")
 ;; '(org-agenda-files (list org-directory))
+
+;; store backup files here
+(setq backup-directory-alist
+      '(("." . "~/.emacs.d/emacs-backup")))
+
 (setq custom-file
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
@@ -415,6 +420,7 @@
   (setq nrepl-hide-special-buffers t)
   (setq cider-repl-clear-help-banner t)
   (setq cider-repl-display-help-banner nil)
+  (setq cider-font-lock-dynamically '(macro core function var))
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
@@ -478,6 +484,12 @@
   :config
   (setq zenburn-scale-org-headlines t)
   (load-theme 'zenburn t))
+
+(use-package solarized-theme
+  :ensure t
+  :config
+  (setq x-underline-at-descent-line t)
+  (setq solarized-high-contrast-mode-line t))
 
 ;; ORG
 (defun kiwib0y/org-mode-setup ()
