@@ -293,7 +293,6 @@
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-eldoc-hook nil)
   :hook ((js-mode
-          js2-mode
           typescript-mode
           web-mode
           c-mode
