@@ -68,9 +68,9 @@
 (defun kiwib0y/font-face ()
   "Setup all fonts to Hack font."
   (set-face-attribute 'default nil
-		      :font "Hack" :height kiwib0y/font-sizes)
+          :font "Hack" :height kiwib0y/font-sizes)
   (set-face-attribute 'fixed-pitch nil
-		      :font "Hack" :height kiwib0y/font-sizes))
+          :font "Hack" :height kiwib0y/font-sizes))
 
 ;; Set UTF-8 for easy cross-platform use
 (set-default-coding-systems 'utf-8)
@@ -78,9 +78,9 @@
 ;; daemon frame setup
 (if (daemonp)
     (add-hook 'after-make-frame-functions
-	      (lambda (frame)
-		(with-selected-frame frame
-		  (kiwib0y/font-face))))
+        (lambda (frame)
+    (with-selected-frame frame
+      (kiwib0y/font-face))))
   (kiwib0y/font-face))
 
 ;; set tabs to be 2 spaces
@@ -101,12 +101,12 @@
 
 ;; line-numbers set up for different modes
 (dolist (mode '(shell-mode-hook
-		eshell-mode-hook
-		term-mode-hook
-		treemacs-mode-hook
-		org-mode-hook
-		pdf-view-mode-hook
-		image-mode-hook))
+    eshell-mode-hook
+    term-mode-hook
+    treemacs-mode-hook
+    org-mode-hook
+    pdf-view-mode-hook
+    image-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; hook for commenting
@@ -191,9 +191,9 @@
   (define-key dired-mode-map (kbd "f") 'dired-single-buffer)
   (define-key dired-mode-map (kbd "b") '(lambda () (interactive) (dired-single-buffer ".."))) ;; 'dired-sinlge-up-directory
   (add-hook 'dired-mode-hook
-	    (lambda ()
-	      (interactive)
-	      (dired-hide-details-mode 1))))
+      (lambda ()
+        (interactive)
+        (dired-hide-details-mode 1))))
 
 (use-package dired-single)
 
@@ -320,8 +320,8 @@
 (use-package rustic
   :ensure t
   :bind (:map rustic-mode-map
-	      ("M-j" . lsp-ui-imenu)
-	      ("M-?" . lsp-find-references)))
+        ("M-j" . lsp-ui-imenu)
+        ("M-?" . lsp-find-references)))
 
 ;; rust programming setup
 (use-package rust-mode
@@ -367,8 +367,8 @@
   :mode "\\.vue\\'"
   :hook
   (vue-mode . lsp-deferred)
-	:config
-	(setq mmm-submode-decoration-level 0)
+  :config
+  (setq mmm-submode-decoration-level 0)
   (setq-default vue-html-extra-indent 2)
   (setq-default vue-indent-level 2))
 
