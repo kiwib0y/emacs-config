@@ -478,6 +478,11 @@
   :init (setq markdown-command "markdown"))
 
 ;; theme
+(use-package modus-themes
+  :ensure nil
+  :config
+  (load-theme 'modus-vivendi))
+
 (use-package zenburn-theme
   :ensure t
   :config
