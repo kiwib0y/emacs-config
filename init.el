@@ -478,13 +478,13 @@
 (use-package modus-themes
   :ensure nil
   :config
+  (setq modus-themes-scale-headings t)
   (load-theme 'modus-vivendi))
 
 (use-package zenburn-theme
   :ensure t
   :config
-  (setq zenburn-scale-org-headlines t)
-  (load-theme 'zenburn t))
+  (setq zenburn-scale-org-headlines t))
 
 (use-package solarized-theme
   :ensure t
