@@ -317,26 +317,23 @@
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
+;; rust programming setup
 (use-package rustic
   :ensure t
-  :bind (:map rustic-mode-map
+  :bind
+  (:map rustic-mode-map
         ("M-j" . lsp-ui-imenu)
-        ("M-?" . lsp-find-references)))
-
-;; rust programming setup
-(use-package rust-mode
-  :hook (rust-mode . lsp-deferred)
+        ("M-?" . lsp-find-references))
   :config
-  (add-hook 'lsp-rust-server #'rust-analyzer)
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
-  (define-key rust-mode-map (kbd "<tab>") #'company-indent-or-complete-common)
-  (setq rust-format-on-save t)
-  (setq rust-indent-offset 2))
+  (require 'lsp-rust)
+  (setq rustic-lsp-server 'rust-analyzer)
+  (setq rustic-analyzer-command '("~/.cargo/bin/rust-analyzer"))
+  (setq rust-indent-offset 4))
 
 (use-package cargo-mode
   :config
-  (add-hook 'rust-mode-hook #'cargo-minor-mode))
+  (add-hook 'rustic-mode-hook #'cargo-minor-mode))
+
 
 ;; typescript quickstart
 (use-package typescript-mode
