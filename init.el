@@ -334,6 +334,14 @@
   :config
   (add-hook 'rustic-mode-hook #'cargo-minor-mode))
 
+(use-package sgml-mode
+  :ensure t
+  :hook
+  (html-mode . (lambda () (setq me/pretty-print-function #'sgml-pretty-print)))
+  (html-mode . sgml-electric-tag-pair-mode)
+  (html-mode . sgml-name-8bit-mode)
+  :custom
+  (sgml-basic-offset 2))
 
 ;; typescript quickstart
 (use-package typescript-mode
