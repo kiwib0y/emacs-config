@@ -348,24 +348,25 @@
   :mode "\\.tsx?\\'"
   :hook (typescript-mode . lsp-deferred)
   :config
-  (setq typescript-indent-level 2))
+  (setq typescript-indent-level 2)
+  (setq js-indent-level 2))
 
-(use-package js2-mode
-  :ensure t
-  :mode ("\\.js\\'" . js2-mode)
-  :after lsp
-  :hook (js2-mode . lsp-deferred)
-  :custom
-  (js2-include-node-externs t)
-  (js2-global-externs '("customElements"))
-  (js2-highlight-level 3)
-  (js2r-prefer-let-over-var t)
-  (js2r-prefered-quote-type 2)
-  (js-indent-align-list-continuation t)
-  (global-auto-highlight-symbol-mode t)
-  :config
-  (setq-default js-indent-level 2)
-  (setq-default js2-bounce-indent-p nil))
+;; (use-package js2-mode
+;;   :ensure t
+;;   :mode ("\\.js\\'" . js2-mode)
+;;   :after lsp
+;;   :hook (js2-mode . lsp-deferred)
+;;   :custom
+;;   (js2-include-node-externs t)
+;;   (js2-global-externs '("customElements"))
+;;   (js2-highlight-level 3)
+;;   (js2r-prefer-let-over-var t)
+;;   (js2r-prefered-quote-type 2)
+;;   (js-indent-align-list-continuation t)
+;;   (global-auto-highlight-symbol-mode t)
+;;   :config
+;;   (setq-default js-indent-level 2)
+;;   (setq-default js2-bounce-indent-p nil))
 
 (use-package vue-mode
   :ensure t
