@@ -571,9 +571,9 @@
   :hook (org-mode . kiwib0y/org-mode-visual-fill))
 
 ;; org-mode agenda setup
-;; (setq org-agenda-files
-;;       '("~/.emacs.d/OrgFiles/Agenda.org"))
+(setq org-directory "~/Dropbox/OrgFiles/")
+(setq org-agenda-files (list org-directory))
+(add-to-list 'org-agenda-files org-directory)
 
-;; (add-to-list 'load-path
-;;              org-agenda-files)
+
 ;;; init.el ends here
