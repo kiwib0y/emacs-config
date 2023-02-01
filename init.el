@@ -3,8 +3,8 @@
 ;; Copyright 2021-present, All rights reserved
 ;; Code licensed under the GNU GPL v.3 license
 
-;; Author: KiwiB0y
-;; URL: https://github.com/KiwiB0y/emacs-config
+;; Author: kiwib0y
+;; URL: https://github.com/kiwib0y/emacs-config
 
 ;; This file is not part of GNU Emacs.
 
