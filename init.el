@@ -63,14 +63,14 @@
 (setq vc-follow-symlinks t)
 
 ;; fonts configuration
-(defvar kiwib0y/font-sizes 110)
+(defvar kw/font-sizes 110)
 
-(defun kiwib0y/font-face ()
+(defun kw/font-face ()
   "Setup all fonts to Hack font."
   (set-face-attribute 'default nil
-          :font "Hack" :height kiwib0y/font-sizes)
+          :font "Hack" :height kw/font-sizes)
   (set-face-attribute 'fixed-pitch nil
-          :font "Hack" :height kiwib0y/font-sizes))
+          :font "Hack" :height kw/font-sizes))
 
 ;; Set UTF-8 for easy cross-platform use
 (set-default-coding-systems 'utf-8)
@@ -80,8 +80,8 @@
     (add-hook 'after-make-frame-functions
         (lambda (frame)
     (with-selected-frame frame
-      (kiwib0y/font-face))))
-  (kiwib0y/font-face))
+      (kw/font-face))))
+  (kw/font-face))
 
 ;; set tabs to be 2 spaces
 (setq-default tab-width 2)
@@ -273,7 +273,7 @@
   :ensure t)
 
 ;; lsp-mode setup
-(defun kiwib0y/lsp-mode-setup ()
+(defun kw/lsp-mode-setup ()
   "Shows the in-project path as breadcrumb."
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
@@ -296,7 +296,8 @@
           typescript-mode
           web-mode
           c-mode
-          kiwib0y/lsp-mode-setup) . lsp-deferred))
+          python-mode
+          kw/lsp-mode-setup) . lsp-deferred))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -503,14 +504,14 @@
   (setq solarized-high-contrast-mode-line t))
 
 ;; ORG
-(defun kiwib0y/org-mode-setup ()
+(defun kw/org-mode-setup ()
   "My personal org mode setup."
   (org-indent-mode t)
   (visual-line-mode 1))
 
 (use-package org
   :defer t
-  :hook (org-mode . kiwib0y/org-mode-setup)
+  :hook (org-mode . kw/org-mode-setup)
   :config
   (setq org-ellipsis "↴")
   (setq org-hide-emphasis-markers t)
@@ -560,7 +561,7 @@
                   (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
 
-(defun kiwib0y/org-mode-visual-fill ()
+(defun kw/org-mode-visual-fill ()
   "Center the files for better experience
    in the visual-fill-column mode."
   (setq visual-fill-column-width 100
@@ -568,12 +569,11 @@
   (visual-fill-column-mode 1))
 
 (use-package visual-fill-column
-  :hook (org-mode . kiwib0y/org-mode-visual-fill))
+  :hook (org-mode . kw/org-mode-visual-fill))
 
 ;; org-mode agenda setup
 (setq org-directory "~/Dropbox/OrgFiles/")
 (setq org-agenda-files (list org-directory))
 (add-to-list 'org-agenda-files org-directory)
-
 
 ;;; init.el ends here
