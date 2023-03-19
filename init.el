@@ -45,7 +45,8 @@
 (menu-bar-mode -1)        ;; Disable the menubar
 
 (setq inhibit-startup-message t)
-(setq ad-redefinition-action 'accept) ;; Remove redefinition warning
+(setq ad-redefinition-action 'accept)               ;; Remove redefinition warning
+(setq native-comp-async-report-warnings-errors nil) ;; Remove native compilation error warnings
 
 ;; add this inside of custom-set-variables
 ;; '(org-directory "~/Documents/Org")
