@@ -345,6 +345,37 @@
   :custom
   (sgml-basic-offset 2))
 
+;; python setup
+(use-package python
+  :mode
+  ("\\.py\\'" . python-mode)
+  :interpreter
+  ("python" . python-mode)
+  :init
+  (setq-default indent-tabs-mode nil)
+  :hook
+  (python-mode . eglot-ensure)
+  :config
+  (setq python-indent-offset 4)
+  (setq python-indent-guess-indent-offset nil))
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
+
+(use-package pyvenv
+  :ensure t
+  :after (eglot)
+  :init
+  ;; set the working home directory.
+  ;; create 'versions' directory manualy.
+  (setenv "WORKON_HOME" "~/.pyenv/versions"))
+
+(use-package eglot
+  :ensure t)
+
 ;; typescript quickstart
 (use-package typescript-mode
   :mode "\\.tsx?\\'"
