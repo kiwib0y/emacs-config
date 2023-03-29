@@ -466,8 +466,16 @@
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
+;; terraform setup
 (use-package terraform-mode
-  :ensure t)
+  ;; terraform + lsp is very buggy for now
+  ;; I'd consider using it in the future
+  ;; but for now I'm okay with using regular
+  ;; clean terraform-mode
+  :ensure t
+  :hook
+  (terraform-mode . terraform-format-on-save-mode))
+
 
 ;; company autocompletion setup
 (use-package company
