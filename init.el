@@ -304,7 +304,10 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-position 'at-point)
-  (lsp-ui-sideline-show-hover t))
+  (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-show-with-mouse t)
+  (lsp-ui-doc-delay 0.8)
+  (lsp-ui-sideline-show-hover nil))
 
 (use-package lsp-treemacs
   :after lsp-mode)
