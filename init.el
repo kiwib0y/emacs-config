@@ -103,12 +103,12 @@
 
 ;; line-numbers set up for different modes
 (dolist (mode '(shell-mode-hook
-    eshell-mode-hook
-    term-mode-hook
-    treemacs-mode-hook
-    org-mode-hook
-    pdf-view-mode-hook
-    image-mode-hook))
+                eshell-mode-hook
+                term-mode-hook
+                treemacs-mode-hook
+                org-mode-hook
+                pdf-view-mode-hook
+                image-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; hook for commenting
