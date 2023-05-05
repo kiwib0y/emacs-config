@@ -484,6 +484,10 @@
   :config
   (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent))
 
+;; json setup
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
 
 ;; company autocompletion setup
 (use-package company
