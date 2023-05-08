@@ -551,7 +551,7 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "markdown"))
 
-;; theme
+;; themes
 (use-package modus-themes
   :ensure nil
   :config
@@ -568,6 +568,10 @@
   :config
   (setq x-underline-at-descent-line t)
   (setq solarized-high-contrast-mode-line t))
+
+;; pw
+(use-package password-store
+  :ensure t)
 
 ;; ORG
 (defun kw/org-mode-setup ()
@@ -593,7 +597,8 @@
      (C . t)
      (java . t)
      (python . t)
-     (ruby . t))))
+     (ruby . t)
+     (js . t))))
 
 (setq org-agenda-start-with-log-mode t)
 (setq org-log-done 'time)
