@@ -388,22 +388,41 @@
   (setq typescript-indent-level 2)
   (setq js-indent-level 2))
 
-;; (use-package js2-mode
+(use-package restclient
+  :ensure t)
+
+(use-package rjsx-mode
+  :mode ("\\.jsx?\\'" . rjsx-mode)
+  :hook (rjsx-mode . lsp-deferred)
+  :config
+  (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("pages\\/.*\\.js\\'" . rjsx-mode))
+  (setq js2-mode-show-strict-warnings nil)
+  (setq js2-strict-trailing-comma-warning nil)
+  (setq js2-basic-offset 2)
+  (setq js-indent-level 2))
+
+(add-to-list 'auto-mode-alist '("react" . rjsx-mode))
+
+(use-package js
+  :ensure nil
+  :mode ("\\.jsx?\\'" . js-mode)
+  :config
+  (setq js-indent-level 2))
+
+(with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") nil))
+
+;; (use-package prettier-js
 ;;   :ensure t
-;;   :mode ("\\.js\\'" . js2-mode)
-;;   :after lsp
-;;   :hook (js2-mode . lsp-deferred)
-;;   :custom
-;;   (js2-include-node-externs t)
-;;   (js2-global-externs '("customElements"))
-;;   (js2-highlight-level 3)
-;;   (js2r-prefer-let-over-var t)
-;;   (js2r-prefered-quote-type 2)
-;;   (js-indent-align-list-continuation t)
-;;   (global-auto-highlight-symbol-mode t)
+;;   :hook ((web-mode . prettier-js-mode)
+;;          (typescript-mode . prettier-js-mode)
+;;          (js-mode . prettier-js-mode)
+;;          (rjsx-mode . prettier-js-mode))
 ;;   :config
-;;   (setq-default js-indent-level 2)
-;;   (setq-default js2-bounce-indent-p nil))
+;;   (setq prettier-js-args '("--single-quote"
+;;                            "--trailing-comma" "all"
+;;                            "--print-width" "100")))
 
 (use-package vue-mode
   :ensure t
