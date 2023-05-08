@@ -551,7 +551,7 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "markdown"))
 
-;; theme
+;; themes
 (use-package modus-themes
   :ensure nil
   :config
