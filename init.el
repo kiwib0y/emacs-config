@@ -320,6 +320,7 @@
 (setq lsp-enable-links nil)
 
 (use-package dap-mode
+  :ensure t
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
