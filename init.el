@@ -583,6 +583,10 @@
   (org-indent-mode t)
   (visual-line-mode 1))
 
+;; disable electric-pair-mode
+(add-hook 'org-mode-hook
+          (lambda () (electric-pair-mode 0)))
+
 (use-package org
   :defer t
   :hook (org-mode . kw/org-mode-setup)
