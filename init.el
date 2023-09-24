@@ -320,6 +320,7 @@
 (setq lsp-enable-links nil)
 
 (use-package dap-mode
+  :ensure t
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
@@ -561,7 +562,7 @@
 
 ;; themes
 (use-package modus-themes
-  :ensure nil
+  :ensure t
   :config
   (setq modus-themes-scale-headings t)
   (load-theme 'modus-vivendi))
