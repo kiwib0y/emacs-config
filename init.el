@@ -481,7 +481,7 @@
   (setq nrepl-hide-special-buffers t)
   (setq cider-repl-clear-help-banner t)
   (setq cider-repl-display-help-banner nil)
-  (setq cider-font-lock-dynamically '(macro core function var))
+  ;; (setq cider-font-lock-dynamically '(macro core function var))
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
