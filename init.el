@@ -163,18 +163,22 @@
   (global-set-key (kbd "M-S-<up>") 'windmove-up)
   (global-set-key (kbd "M-S-<down>") 'windmove-down))
 
+;; Ivy, Swiper and Counsel
+(use-package swiper
+  :ensure t)
+(use-package counsel
+  :ensure t)
 (use-package ivy
-  :diminish
-  :bind
-  ("M-x" . 'counsel-M-x)
-  ("C-s" . 'swiper)
-  ("C-x C-f" . 'counsel-find-file)
+  :diminish ivy-mode
+  :bind (("M-x"     . counsel-M-x)
+         ("C-s"     . swiper)
+         ("C-x y"   . counsel-yank-pop)
+         ("C-x C-f" . counsel-find-file)
+         ("C-c C-r" . ivy-resume))
+  :commands (ivy-set-actions)
   :config
-  (ivy-mode 1))
+  (ivy-mode))
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
 
 ;; a useful tool for the M-x mode
 (use-package ivy-prescient
