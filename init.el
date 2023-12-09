@@ -570,13 +570,6 @@
   :init
   (setq markdown-command "markdown"))
 
-;; preview markdown files
-(use-package grip-mode
-  :ensure t
-  :config
-  (setq grip-binary-path "~/.local/bin/grip")
-  (setq grip-update-after-change nil))
-
 ;; themes
 (use-package modus-themes
   :ensure t
