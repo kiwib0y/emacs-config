@@ -431,6 +431,17 @@
 (with-eval-after-load 'js
   (define-key js-mode-map (kbd "M-.") nil))
 
+;; (use-package prettier-js
+;;   :ensure t
+;;   :hook ((web-mode . prettier-js-mode)
+;;          (typescript-mode . prettier-js-mode)
+;;          (js-mode . prettier-js-mode)
+;;          (rjsx-mode . prettier-js-mode))
+;;   :config
+;;   (setq prettier-js-args '("--single-quote"
+;;                            "--trailing-comma" "all"
+;;                            "--print-width" "100")))
+
 (use-package vue-mode
   :ensure t
   :mode "\\.vue\\'"
@@ -534,14 +545,20 @@
   (diminish 'company-mode))
 
 (use-package company-box
-  :diminish
   :hook (company-mode . company-box-mode))
 
 (use-package company-prescient
-  :diminish
   :after company
   :config
   (company-prescient-mode 1))
+
+;; pdf-view setup
+(use-package pdf-tools
+  :ensure t
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-width)
+  (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
 
 ;; markdown setup
 (use-package markdown-mode
@@ -553,84 +570,106 @@
   :init
   (setq markdown-command "markdown"))
 
-(load-theme 'modus-vivendi)
+;; preview markdown files
+(use-package grip-mode
+  :ensure t
+  :config
+  (setq grip-binary-path "~/.local/bin/grip")
+  (setq grip-update-after-change nil))
+
+;; themes
+(use-package modus-themes
+  :ensure t
+  :config
+  (setq modus-themes-scale-headings t)
+  (load-theme 'modus-vivendi))
+
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (setq zenburn-scale-org-headlines t))
+
+(use-package solarized-theme
+  :ensure t
+  :config
+  (setq x-underline-at-descent-line t)
+  (setq solarized-high-contrast-mode-line t))
+
+;; ORG
+(defun kw/org-mode-setup ()
+  "My personal org mode setup."
+  (org-indent-mode t)
+  (visual-line-mode 1))
+
+;; disable electric-pair-mode
+(add-hook 'org-mode-hook
+          (lambda () (electric-pair-mode 0)))
+
+(use-package org
+  :defer t
+  :hook (org-mode . kw/org-mode-setup)
+  :config
+  (setq org-ellipsis "↴")
+  (setq org-hide-emphasis-markers t)
+  (setq org-export-latex-listings t)
+  (setq org-latex-listings 'minted
+        org-latex-packages-alist '(("" "minted")))
+  (setq org-src-fontify-natively t)
 
 
-;; ;; ORG
-;; (defun kw/org-mode-setup ()
-;;   "My personal org mode setup."
-;;   (org-indent-mode t)
-;;   (visual-line-mode 1))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (C . t)
+     (java . t)
+     (python . t)
+     (ruby . t))))
 
-;; ;; disable electric-pair-mode
-;; (add-hook 'org-mode-hook
-;;           (lambda () (electric-pair-mode 0)))
+(setq org-agenda-start-with-log-mode t)
+(setq org-log-done 'time)
+(setq org-log-into-drawer t)
+(setq latex-run-command "pdflatex")
 
-;; (use-package org
-;;   :defer t
-;;   :hook (org-mode . kw/org-mode-setup)
-;;   :config
-;;   (setq org-ellipsis "↴")
-;;   (setq org-hide-emphasis-markers t)
-;;   (setq org-export-latex-listings t)
-;;   (setq org-latex-listings 'minted
-;;         org-latex-packages-alist '(("" "minted")))
-;;   (setq org-src-fontify-natively t)
+(require 'org-tempo)
 
+(use-package org-appear
+  :hook (org-mode . org-appear-mode))
 
-;;   (org-babel-do-load-languages
-;;    'org-babel-load-languages
-;;    '((emacs-lisp . t)
-;;      (C . t)
-;;      (java . t)
-;;      (python . t)
-;;      (ruby . t))))
+(use-package org-tree-slide
+  :custom
+  (org-image-actual-width nil))
 
-;; (setq org-agenda-start-with-log-mode t)
-;; (setq org-log-done 'time)
-;; (setq org-log-into-drawer t)
-;; (setq latex-run-command "pdflatex")
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●" "○")))
 
-;; (require 'org-tempo)
+(with-eval-after-load 'org-faces
+  (set-face-attribute 'org-document-title nil :weight 'bold :height 1.32)
+  (dolist (face '((org-level-1 . 1.3)
+                  (org-level-2 . 1.2)
+                  (org-level-3 . 1.1)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 1.0)
+                  (org-level-6 . 1.0)
+                  (org-level-7 . 1.0)
+                  (org-level-8 . 1.0)))
+    (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
 
-;; (use-package org-appear
-;;   :hook (org-mode . org-appear-mode))
+(defun kw/org-mode-visual-fill ()
+  "Center the files for better experience
+   in the visual-fill-column mode."
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
 
-;; (use-package org-tree-slide
-;;   :custom
-;;   (org-image-actual-width nil))
+(use-package visual-fill-column
+  :hook (org-mode . kw/org-mode-visual-fill))
 
-;; (use-package org-bullets
-;;   :after org
-;;   :hook (org-mode . org-bullets-mode)
-;;   :custom
-;;   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●" "○")))
-
-;; (with-eval-after-load 'org-faces
-;;   (set-face-attribute 'org-document-title nil :weight 'bold :height 1.32)
-;;   (dolist (face '((org-level-1 . 1.3)
-;;                   (org-level-2 . 1.2)
-;;                   (org-level-3 . 1.1)
-;;                   (org-level-4 . 1.0)
-;;                   (org-level-5 . 1.0)
-;;                   (org-level-6 . 1.0)
-;;                   (org-level-7 . 1.0)
-;;                   (org-level-8 . 1.0)))
-;;     (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
-
-;; (defun kw/org-mode-visual-fill ()
-;;   "Center the files for better experience
-;;    in the visual-fill-column mode."
-;;   (setq visual-fill-column-width 100
-;;         visual-fill-column-center-text t)
-;;   (visual-fill-column-mode 1))
-
-;; (use-package visual-fill-column
-;;   :hook (org-mode . kw/org-mode-visual-fill))
-
-;; ;; org-mode agenda setup
-;; (setq org-directory "~/Dropbox/OrgFiles/")
-;; (setq org-agenda-files (list org-directory))
-;; (add-to-list 'org-agenda-files org-directory)
+;; org-mode agenda setup
+(setq org-directory "~/Dropbox/OrgFiles/")
+(setq org-agenda-files (list org-directory))
+(add-to-list 'org-agenda-files org-directory)
 
 ;;; init.el ends here
