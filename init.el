@@ -163,6 +163,9 @@
   (global-set-key (kbd "M-S-<up>") 'windmove-up)
   (global-set-key (kbd "M-S-<down>") 'windmove-down))
 
+;; hide annoying modes in modeline
+(use-package diminish)
+
 ;; Ivy, Swiper and Counsel
 (use-package swiper
   :ensure t)
@@ -179,7 +182,6 @@
   :config
   (ivy-mode))
 
-
 ;; a useful tool for the M-x mode
 (use-package ivy-prescient
   :after counsel
@@ -187,8 +189,6 @@
   (ivy-prescient-mode 1)
   (prescient-persist-mode 1))
 
-;; hide annoying modes in modeline
-(use-package diminish)
 
 (use-package all-the-icons
   :ensure t)
