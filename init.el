@@ -116,6 +116,8 @@
           (lambda()
             (define-key prog-mode-map (kbd "M-;") #'comment-or-uncomment-region)))
 
+;; ensure always -> I'm on emacs 30 and it's a native compile
+(setq use-package-always-ensure t)
 ;; initialize package source
 (require 'package)
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -123,16 +125,24 @@
                          ("elpa" . "https://elpa.gnu.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")))
 
+
 ;; check package sources
+(setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (package-initialize)
+;; update the package metadata if the local cache is missing
 (unless package-archive-contents
   (package-refresh-contents))
+
+(eval-when-compile
+  (require 'use-package))
+
 ;; initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-
 (require 'use-package)
-(setq use-package-always-ensure t)
+
+;; Set the right directory to store the native comp cache
+(add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
 
 ;; scrolling smoothly
 (use-package good-scroll
