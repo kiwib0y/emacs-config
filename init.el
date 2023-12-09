@@ -265,10 +265,11 @@
 
 ;; coding setup
 (use-package projectile
+  :ensure t
   :diminish projectile-mode
   :config (projectile-mode +1)
   :custom ((projectile-completion-system 'ivy))
-  :bind-keymap
+  :bind
   ("C-c p" . projectile-command-map)
   :init
   (when (file-directory-p "~/Github")
@@ -276,6 +277,7 @@
   (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package counsel-projectile
+  :after projectile
   :config (counsel-projectile-mode))
 
 ;; flycheck syntax checking setup
