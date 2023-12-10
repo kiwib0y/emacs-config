@@ -3,8 +3,7 @@
 #+options: num:nil date:nil toc:nil
 
 * Intro
-This is a configuration file that includes all of my personal changes and improvements on the GNU Emacs version 28.1
-(I personally use the GNU Guix package-manager for Emacs, but it should work with versions from other package managers)
+This is a configuration file that includes all of my personal changes and improvements on the GNU Emacs version 30
 
 Everything that I wrote here is ment to be in the =.emacs= or =init.el= file.
 Enjoy and feel free to add on new content.
