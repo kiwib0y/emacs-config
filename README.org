@@ -8,7 +8,15 @@ This is a configuration file that includes all of my personal changes and improv
 Everything that I wrote here is ment to be in the =.emacs= or =init.el= file.
 Enjoy and feel free to add on new content.
 
-* Installation
+** Emacs installation
+
+1. Download from the OG repo: git clone [[git://git.savannah.gnu.org/emacs.git]].
+2. Run the =./autogen.sh= script.
+3. Run the =./configure= script with flags =--with-native-compilation=, =--with-json= and =--with-x=.
+4. Run the =make install= to install it. You could add the =-j[N]= flag if you want to use more cores.
+
+
+* Link my =init.el=
 
 To use my configuration clone the repository and put the =init.el= in your =~/.emacs.d/= folder.
 
