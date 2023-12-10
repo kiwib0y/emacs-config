@@ -45,15 +45,17 @@
 (menu-bar-mode -1)        ;; Disable the menubar
 
 (setq inhibit-startup-message t)
-(setq ad-redefinition-action 'accept) ;; Remove redefinition warning
+(setq ad-redefinition-action 'accept)               ;; Remove redefinition warning
+(setq native-comp-async-report-warnings-errors nil) ;; Remove native compilation error warnings
 
 ;; add this inside of custom-set-variables
 ;; '(org-directory "~/Documents/Org")
 ;; '(org-agenda-files (list org-directory))
 
-;; store backup files here
-(setq backup-directory-alist
-      '(("." . "~/.emacs.d/emacs-backup")))
+;; don't store backup files
+(setq make-backup-files nil)
+;; (setq backup-directory-alist
+;;       '(("." . "~/.emacs.d/emacs-backup")))
 
 (setq custom-file
       (expand-file-name "~/.emacs.d/custom/custom.el" user-emacs-directory))
@@ -101,12 +103,12 @@
 
 ;; line-numbers set up for different modes
 (dolist (mode '(shell-mode-hook
-    eshell-mode-hook
-    term-mode-hook
-    treemacs-mode-hook
-    org-mode-hook
-    pdf-view-mode-hook
-    image-mode-hook))
+                eshell-mode-hook
+                term-mode-hook
+                treemacs-mode-hook
+                org-mode-hook
+                pdf-view-mode-hook
+                image-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; hook for commenting
@@ -114,6 +116,8 @@
           (lambda()
             (define-key prog-mode-map (kbd "M-;") #'comment-or-uncomment-region)))
 
+;; ensure always -> I'm on emacs 30 and it's a native compile
+(setq use-package-always-ensure t)
 ;; initialize package source
 (require 'package)
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -121,16 +125,24 @@
                          ("elpa" . "https://elpa.gnu.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")))
 
+
 ;; check package sources
+(setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (package-initialize)
+;; update the package metadata if the local cache is missing
 (unless package-archive-contents
   (package-refresh-contents))
+
+(eval-when-compile
+  (require 'use-package))
+
 ;; initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-
 (require 'use-package)
-(setq use-package-always-ensure t)
+
+;; Set the right directory to store the native comp cache
+(add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
 
 ;; scrolling smoothly
 (use-package good-scroll
@@ -151,18 +163,24 @@
   (global-set-key (kbd "M-S-<up>") 'windmove-up)
   (global-set-key (kbd "M-S-<down>") 'windmove-down))
 
-(use-package ivy
-  :diminish
-  :bind
-  ("M-x" . 'counsel-M-x)
-  ("C-s" . 'swiper)
-  ("C-x C-f" . 'counsel-find-file)
-  :config
-  (ivy-mode 1))
+;; hide annoying modes in modeline
+(use-package diminish)
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
+;; Ivy, Swiper and Counsel
+(use-package swiper
+  :ensure t)
+(use-package counsel
+  :ensure t)
+(use-package ivy
+  :diminish ivy-mode
+  :bind (("M-x"     . counsel-M-x)
+         ("C-s"     . swiper)
+         ("C-x y"   . counsel-yank-pop)
+         ("C-x C-f" . counsel-find-file)
+         ("C-c C-r" . ivy-resume))
+  :commands (ivy-set-actions)
+  :config
+  (ivy-mode))
 
 ;; a useful tool for the M-x mode
 (use-package ivy-prescient
@@ -170,9 +188,6 @@
   :config
   (ivy-prescient-mode 1)
   (prescient-persist-mode 1))
-
-;; hide annoying modes in modeline
-(use-package diminish)
 
 (use-package all-the-icons
   :ensure t)
@@ -249,10 +264,11 @@
 
 ;; coding setup
 (use-package projectile
+  :ensure t
   :diminish projectile-mode
   :config (projectile-mode +1)
   :custom ((projectile-completion-system 'ivy))
-  :bind-keymap
+  :bind
   ("C-c p" . projectile-command-map)
   :init
   (when (file-directory-p "~/Github")
@@ -260,6 +276,7 @@
   (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package counsel-projectile
+  :after projectile
   :config (counsel-projectile-mode))
 
 ;; flycheck syntax checking setup
@@ -303,7 +320,10 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-position 'at-point)
-  (lsp-ui-sideline-show-hover t))
+  (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-show-with-mouse t)
+  (lsp-ui-doc-delay 0.8)
+  (lsp-ui-sideline-show-hover nil))
 
 (use-package lsp-treemacs
   :after lsp-mode)
@@ -315,6 +335,7 @@
 (setq lsp-enable-links nil)
 
 (use-package dap-mode
+  :ensure t
   :after lsp-mode
   :config (dap-auto-configure-mode))
 
@@ -344,6 +365,38 @@
   :custom
   (sgml-basic-offset 2))
 
+;; python setup
+(use-package python
+  :mode
+  ("\\.py\\'" . python-mode)
+  :interpreter
+  ("python" . python-mode)
+  :init
+  (setq-default indent-tabs-mode nil)
+  :hook
+  (python-mode . eglot-ensure)
+  (python-mode . eldoc-mode)
+  :config
+  (setq python-indent-offset 4)
+  (setq python-indent-guess-indent-offset nil))
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
+
+(use-package pyvenv
+  :ensure t
+  :after (eglot)
+  :init
+  ;; set the working home directory.
+  ;; create 'versions' directory manualy.
+  (setenv "WORKON_HOME" "~/.pyenv/versions"))
+
+(use-package eglot
+  :ensure t)
+
 ;; typescript quickstart
 (use-package typescript-mode
   :mode "\\.tsx?\\'"
@@ -352,22 +405,41 @@
   (setq typescript-indent-level 2)
   (setq js-indent-level 2))
 
-;; (use-package js2-mode
+(use-package restclient
+  :ensure t)
+
+(use-package rjsx-mode
+  :mode ("\\.jsx?\\'" . rjsx-mode)
+  :hook (rjsx-mode . lsp-deferred)
+  :config
+  (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("pages\\/.*\\.js\\'" . rjsx-mode))
+  (setq js2-mode-show-strict-warnings nil)
+  (setq js2-strict-trailing-comma-warning nil)
+  (setq js2-basic-offset 2)
+  (setq js-indent-level 2))
+
+(add-to-list 'auto-mode-alist '("react" . rjsx-mode))
+
+(use-package js
+  :ensure nil
+  :mode ("\\.jsx?\\'" . js-mode)
+  :config
+  (setq js-indent-level 2))
+
+(with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") nil))
+
+;; (use-package prettier-js
 ;;   :ensure t
-;;   :mode ("\\.js\\'" . js2-mode)
-;;   :after lsp
-;;   :hook (js2-mode . lsp-deferred)
-;;   :custom
-;;   (js2-include-node-externs t)
-;;   (js2-global-externs '("customElements"))
-;;   (js2-highlight-level 3)
-;;   (js2r-prefer-let-over-var t)
-;;   (js2r-prefered-quote-type 2)
-;;   (js-indent-align-list-continuation t)
-;;   (global-auto-highlight-symbol-mode t)
+;;   :hook ((web-mode . prettier-js-mode)
+;;          (typescript-mode . prettier-js-mode)
+;;          (js-mode . prettier-js-mode)
+;;          (rjsx-mode . prettier-js-mode))
 ;;   :config
-;;   (setq-default js-indent-level 2)
-;;   (setq-default js2-bounce-indent-p nil))
+;;   (setq prettier-js-args '("--single-quote"
+;;                            "--trailing-comma" "all"
+;;                            "--print-width" "100")))
 
 (use-package vue-mode
   :ensure t
@@ -403,8 +475,7 @@
   ;; enable in the *scratch* buffer
   (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook #'paredit-mode)
-  (add-hook 'lisp-mode-hook #'paredit-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
+  (add-hook 'lisp-mode-hook #'paredit-mode))
 
 ;; clojure programming setup
 (use-package clojure-mode
@@ -427,12 +498,32 @@
   (setq nrepl-hide-special-buffers t)
   (setq cider-repl-clear-help-banner t)
   (setq cider-repl-display-help-banner nil)
-  (setq cider-font-lock-dynamically '(macro core function var))
+  ;; (setq cider-font-lock-dynamically '(macro core function var))
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
+;; terraform setup
 (use-package terraform-mode
-  :ensure t)
+  ;; terraform + lsp is very buggy for now
+  ;; I'd consider using it in the future
+  ;; but for now I'm okay with using regular
+  ;; clean terraform-mode
+  :ensure t
+  :hook
+  (terraform-mode . terraform-format-on-save-mode))
+
+;; yaml setup
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yml\\'"
+         "\\.yaml\\'")
+  :config
+  (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent))
+
+;; json setup
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
 
 ;; company autocompletion setup
 (use-package company
@@ -468,14 +559,6 @@
   (setq-default pdf-view-display-size 'fit-width)
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
 
-;; yaml setup
-(use-package yaml-mode
-  :ensure t
-  :mode (("\\.yml\\'" . yaml-mode)
-         ("\\.yaml\\'" . yaml-mode))
-  :config
-  (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent))
-
 ;; markdown setup
 (use-package markdown-mode
   :ensure t
@@ -483,11 +566,12 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "markdown"))
+  :init
+  (setq markdown-command "markdown"))
 
-;; theme
+;; themes
 (use-package modus-themes
-  :ensure nil
+  :ensure t
   :config
   (setq modus-themes-scale-headings t)
   (load-theme 'modus-vivendi))
@@ -508,6 +592,10 @@
   "My personal org mode setup."
   (org-indent-mode t)
   (visual-line-mode 1))
+
+;; disable electric-pair-mode
+(add-hook 'org-mode-hook
+          (lambda () (electric-pair-mode 0)))
 
 (use-package org
   :defer t
