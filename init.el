@@ -267,8 +267,8 @@
   :ensure t
   :diminish projectile-mode
   :config (projectile-mode +1)
-  :custom ((projectile-completion-system 'ivy))
-  :bind
+  :custom (projectile-completion-system 'ivy)
+  :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
   (when (file-directory-p "~/Github")
