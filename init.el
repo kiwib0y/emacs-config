@@ -271,8 +271,8 @@
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-  (when (file-directory-p "~/Github")
-    (setq projectile-project-search-path '("~/Github")))
+  (when (file-directory-p "~/code")
+    (setq projectile-project-search-path '("~/code")))
   (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package counsel-projectile
