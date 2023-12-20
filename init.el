@@ -197,7 +197,7 @@
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
   :config
-  (setq dired-listing-switches "-laGh1v --group-directories-first")
+  (setq dired-listing-switches "-lAGh1v --sort=extension --group-directories-first")
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
   (setq delete-by-moving-to-trash t)
