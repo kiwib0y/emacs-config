@@ -177,6 +177,7 @@
          ("C-s"     . swiper)
          ("C-x y"   . counsel-yank-pop)
          ("C-x C-f" . counsel-find-file)
+         ("C-x b"   . counsel-switch-buffer)
          ("C-c C-r" . ivy-resume))
   :commands (ivy-set-actions)
   :config
