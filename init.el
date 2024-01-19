@@ -587,6 +587,12 @@
   (setq x-underline-at-descent-line t)
   (setq solarized-high-contrast-mode-line t))
 
+;; eshell prompt
+(setq eshell-prompt-function
+      (lambda ()
+        (concat "[" (getenv "USER") "@" (system-name) " "
+                (eshell/pwd) "] " (if (= (user-uid) 0) "# " "λ "))))
+
 ;; ORG
 (defun kw/org-mode-setup ()
   "My personal org mode setup."
