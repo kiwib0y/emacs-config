@@ -456,11 +456,18 @@
 (use-package vue-html-mode
   :defer t)
 
+(use-package svelte-mode
+  :ensure t
+  :mode "\\.svelte\\'"
+  :hook
+  (svelte-mode . lsp-deferred))
+
 (use-package web-mode
   :ensure t
   :defer t
   :mode ("\\.html\\'"
-         "\\.css\\'")
+         "\\.css\\'"
+         "\\.svelte\\'")
   :config
   (setq web-mode-script-padding 2)
   (setq web-mode-style-padding 2)
