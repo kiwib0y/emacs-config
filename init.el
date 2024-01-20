@@ -366,6 +366,10 @@
   :custom
   (sgml-basic-offset 2))
 
+;; Eglot setup
+(use-package eglot
+  :ensure t)
+
 ;; python setup
 (use-package python
   :mode
@@ -394,9 +398,6 @@
   ;; set the working home directory.
   ;; create 'versions' directory manualy.
   (setenv "WORKON_HOME" "~/.pyenv/versions"))
-
-(use-package eglot
-  :ensure t)
 
 ;; typescript quickstart
 (use-package typescript-mode
