@@ -388,7 +388,7 @@
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
+                          'lsp-pyright
                           (lsp-deferred))))
 
 (use-package pyvenv
