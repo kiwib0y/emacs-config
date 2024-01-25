@@ -518,8 +518,8 @@
   ;; but for now I'm okay with using regular
   ;; clean terraform-mode
   :ensure t
-  :hook
-  (terraform-mode . terraform-format-on-save-mode))
+  :config
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 ;; yaml setup
 (use-package yaml-mode
