@@ -213,8 +213,6 @@
 
 (use-package dired-single)
 
-(use-package all-the-icons-dired
-  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package emojify
   :hook (markdown-mode . emojify-mode))
