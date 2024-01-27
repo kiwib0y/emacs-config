@@ -213,8 +213,10 @@
 
 (use-package dired-single)
 
-(use-package all-the-icons-dired
-  :hook (dired-mode . all-the-icons-dired-mode))
+(use-package nerd-icons-dired
+  :ensure t
+  :config
+  (add-hook 'dired-mode-hook #'nerd-icons-dired-mode))
 
 (use-package emojify
   :hook (markdown-mode . emojify-mode))
@@ -366,6 +368,10 @@
   :custom
   (sgml-basic-offset 2))
 
+;; Eglot setup
+(use-package eglot
+  :ensure t)
+
 ;; python setup
 (use-package python
   :mode
@@ -374,17 +380,19 @@
   ("python" . python-mode)
   :init
   (setq-default indent-tabs-mode nil)
-  :hook
-  (python-mode . eglot-ensure)
-  (python-mode . eldoc-mode)
+  ;; :hook
+  ;; (python-mode . eglot-ensure)
+  ;; (python-mode . eldoc-mode)
   :config
   (setq python-indent-offset 4)
   (setq python-indent-guess-indent-offset nil))
 
 (use-package lsp-pyright
   :ensure t
+  :mode
+  ("\\.py\\'" . python-mode)
   :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
+                          'lsp-pyright
                           (lsp-deferred))))
 
 (use-package pyvenv
@@ -394,9 +402,6 @@
   ;; set the working home directory.
   ;; create 'versions' directory manualy.
   (setenv "WORKON_HOME" "~/.pyenv/versions"))
-
-(use-package eglot
-  :ensure t)
 
 ;; typescript quickstart
 (use-package typescript-mode
@@ -455,11 +460,18 @@
 (use-package vue-html-mode
   :defer t)
 
+(use-package svelte-mode
+  :ensure t
+  :mode "\\.svelte\\'"
+  :hook
+  (svelte-mode . lsp-deferred))
+
 (use-package web-mode
   :ensure t
   :defer t
   :mode ("\\.html\\'"
-         "\\.css\\'")
+         "\\.css\\'"
+         "\\.svelte\\'")
   :config
   (setq web-mode-script-padding 2)
   (setq web-mode-style-padding 2)
@@ -510,8 +522,8 @@
   ;; but for now I'm okay with using regular
   ;; clean terraform-mode
   :ensure t
-  :hook
-  (terraform-mode . terraform-format-on-save-mode))
+  :config
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 ;; yaml setup
 (use-package yaml-mode
