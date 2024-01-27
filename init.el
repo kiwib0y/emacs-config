@@ -213,6 +213,10 @@
 
 (use-package dired-single)
 
+(use-package nerd-icons-dired
+  :ensure t
+  :config
+  (add-hook 'dired-mode-hook #'nerd-icons-dired-mode))
 
 (use-package emojify
   :hook (markdown-mode . emojify-mode))
