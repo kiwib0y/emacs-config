@@ -380,15 +380,17 @@
   ("python" . python-mode)
   :init
   (setq-default indent-tabs-mode nil)
-  :hook
-  (python-mode . eglot-ensure)
-  (python-mode . eldoc-mode)
+  ;; :hook
+  ;; (python-mode . eglot-ensure)
+  ;; (python-mode . eldoc-mode)
   :config
   (setq python-indent-offset 4)
   (setq python-indent-guess-indent-offset nil))
 
 (use-package lsp-pyright
   :ensure t
+  :mode
+  ("\\.py\\'" . python-mode)
   :hook (python-mode . (lambda ()
                           'lsp-pyright
                           (lsp-deferred))))
