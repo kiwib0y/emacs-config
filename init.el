@@ -420,9 +420,9 @@
   :config
   (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
   (add-to-list 'auto-mode-alist '("pages\\/.*\\.js\\'" . rjsx-mode))
-  (setq js2-mode-show-strict-warnings nil)
-  (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-basic-offset 2)
+  ;; (setq js2-mode-show-strict-warnings nil)
+  ;; (setq js2-strict-trailing-comma-warning nil)
+  ;; (setq js2-basic-offset 2)
   (setq js-indent-level 2))
 
 (add-to-list 'auto-mode-alist '("react" . rjsx-mode))
