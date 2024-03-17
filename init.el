@@ -564,6 +564,10 @@
   :config
   (company-prescient-mode 1))
 
+;; Docker mode
+(use-package dockerfile-mode
+  :ensure t)
+
 ;; pdf-view setup
 (use-package pdf-tools
   :ensure t
