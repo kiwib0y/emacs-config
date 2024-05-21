@@ -293,10 +293,9 @@
   :ensure t)
 
 ;; lsp-mode setup
-(defun kw/lsp-mode-setup ()
-  "Shows the in-project path as breadcrumb."
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
+;; (defun kw/lsp-mode-setup ()
+;;   "Disable the in-project path breadcrumb."
+;;   (setq lsp-headerline-breadcrumb-enable nil))
 
 (use-package lsp-mode
   :defer t
