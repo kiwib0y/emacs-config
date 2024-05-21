@@ -336,6 +336,14 @@
 
 (setq lsp-enable-links nil)
 
+(use-package lsp-tailwindcss
+  :ensure t
+  :after lsp-mode
+  :init
+  (setq lsp-tailwindcss-add-on-mode t)
+  :config
+  (add-hook 'lsp-tailwindcss-major-modes 'svelte-mode))
+
 (use-package dap-mode
   :ensure t
   :after lsp-mode
