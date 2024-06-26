@@ -315,8 +315,11 @@
           typescript-mode
           web-mode
           c-mode
-          python-mode
-          kw/lsp-mode-setup) . lsp-deferred))
+          c++-mode
+          python-mode) . lsp-deferred)
+  :custom
+  (lsp-headerline-breadcrumb-enable nil))
+
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
