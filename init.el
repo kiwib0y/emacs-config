@@ -481,7 +481,9 @@
   :ensure t
   :mode "\\.svelte\\'"
   :hook
-  (svelte-mode . lsp-deferred))
+  (svelte-mode . lsp-deferred)
+  :config
+  (setq svelte-basic-offset 2))
 
 (use-package web-mode
   :ensure t
