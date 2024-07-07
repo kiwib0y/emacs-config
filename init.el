@@ -311,9 +311,10 @@
   (setq read-process-output-max (* 1024 1024))
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-eldoc-hook nil)
-  :hook ((js-mode
+  :hook ((js2-jsx-mode
+          svelte-mode
+          js-mode
           typescript-mode
-          web-mode
           c-mode
           c++-mode
           python-mode) . lsp-deferred)
@@ -436,6 +437,12 @@
   (setq js-indent-level 2))
 
 (add-to-list 'auto-mode-alist '("react" . rjsx-mode))
+
+
+(use-package js2-mode
+    :ensure t
+    :mode (("\\.js\\'" . js2-mode)
+           ("\\.jsx\\'" . js2-jsx-mode)))
 
 (use-package js
   :ensure nil
