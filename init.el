@@ -487,8 +487,7 @@
   :ensure t
   :defer t
   :mode ("\\.html\\'"
-         "\\.css\\'"
-         "\\.svelte\\'")
+         "\\.css\\'")
   :config
   (setq web-mode-script-padding 2)
   (setq web-mode-style-padding 2)
