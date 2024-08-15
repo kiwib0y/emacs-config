@@ -662,6 +662,7 @@
 (setq org-log-done 'time)
 (setq org-log-into-drawer t)
 (setq latex-run-command "pdflatex")
+(setq org-clock-sound "~/Music/bell.wav")
 
 (require 'org-tempo)
 
