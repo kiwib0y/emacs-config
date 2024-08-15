@@ -48,10 +48,6 @@
 (setq ad-redefinition-action 'accept)               ;; Remove redefinition warning
 (setq native-comp-async-report-warnings-errors nil) ;; Remove native compilation error warnings
 
-;; add this inside of custom-set-variables
-;; '(org-directory "~/Documents/Org")
-;; '(org-agenda-files (list org-directory))
-
 ;; don't store backup files
 (setq make-backup-files nil)
 ;; (setq backup-directory-alist
