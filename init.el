@@ -77,6 +77,10 @@
 ;; Set UTF-8 for easy cross-platform use
 (set-default-coding-systems 'utf-8)
 
+;; Set transparent opacity
+(set-frame-parameter nil 'alpha-background 78)
+(add-to-list 'default-frame-alist '(alpha-background . 78))
+
 ;; daemon frame setup
 (if (daemonp)
     (add-hook 'after-make-frame-functions
@@ -609,7 +613,7 @@
   :ensure t
   :config
   (setq modus-themes-scale-headings t)
-  (load-theme 'modus-vivendi))
+  (load-theme 'modus-vivendi-tinted))
 
 (use-package zenburn-theme
   :ensure t
