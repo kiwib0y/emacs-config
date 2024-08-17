@@ -107,6 +107,7 @@
                 term-mode-hook
                 treemacs-mode-hook
                 org-mode-hook
+                org-agenda-mode-hook
                 pdf-view-mode-hook
                 image-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
