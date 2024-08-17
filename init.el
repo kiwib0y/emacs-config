@@ -312,6 +312,7 @@
   (setq read-process-output-max (* 1024 1024))
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-eldoc-hook nil)
+  (setq lsp-eldoc-enable-hover nil)
   :hook ((js2-jsx-mode
           svelte-mode
           js-mode
