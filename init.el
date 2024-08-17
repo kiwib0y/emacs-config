@@ -699,8 +699,16 @@
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
+(defun kw/org-mode-visual-fill ()
+  "Center the files for better experience
+   in the visual-fill-column mode."
+  (setq visual-fill-column-width 120
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
 (use-package visual-fill-column
-  :hook (org-mode . kw/org-mode-visual-fill))
+  :hook ((org-mode . kw/org-mode-visual-fill)
+         (org-agenda-mode . kw/org-mode-visual-fill)))
 
 ;; org-mode agenda setup
 (setq org-directory "~/Dropbox/OrgFiles/")
