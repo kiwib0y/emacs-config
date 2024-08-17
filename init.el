@@ -48,10 +48,6 @@
 (setq ad-redefinition-action 'accept)               ;; Remove redefinition warning
 (setq native-comp-async-report-warnings-errors nil) ;; Remove native compilation error warnings
 
-;; add this inside of custom-set-variables
-;; '(org-directory "~/Documents/Org")
-;; '(org-agenda-files (list org-directory))
-
 ;; don't store backup files
 (setq make-backup-files nil)
 ;; (setq backup-directory-alist
@@ -76,6 +72,10 @@
 
 ;; Set UTF-8 for easy cross-platform use
 (set-default-coding-systems 'utf-8)
+
+;; Set transparent opacity
+(set-frame-parameter nil 'alpha-background 78)
+(add-to-list 'default-frame-alist '(alpha-background . 78))
 
 ;; daemon frame setup
 (if (daemonp)
@@ -107,6 +107,7 @@
                 term-mode-hook
                 treemacs-mode-hook
                 org-mode-hook
+                org-agenda-mode-hook
                 pdf-view-mode-hook
                 image-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -293,10 +294,9 @@
   :ensure t)
 
 ;; lsp-mode setup
-(defun kw/lsp-mode-setup ()
-  "Shows the in-project path as breadcrumb."
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
+;; (defun kw/lsp-mode-setup ()
+;;   "Disable the in-project path breadcrumb."
+;;   (setq lsp-headerline-breadcrumb-enable nil))
 
 (use-package lsp-mode
   :defer t
@@ -312,12 +312,17 @@
   (setq read-process-output-max (* 1024 1024))
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-eldoc-hook nil)
-  :hook ((js-mode
+  (setq lsp-eldoc-enable-hover nil)
+  :hook ((js2-jsx-mode
+          svelte-mode
+          js-mode
           typescript-mode
-          web-mode
           c-mode
-          python-mode
-          kw/lsp-mode-setup) . lsp-deferred))
+          c++-mode
+          python-mode) . lsp-deferred)
+  :custom
+  (lsp-headerline-breadcrumb-enable nil))
+
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -336,6 +341,14 @@
   :ensure t)
 
 (setq lsp-enable-links nil)
+
+(use-package lsp-tailwindcss
+  :ensure t
+  :after lsp-mode
+  :init
+  (setq lsp-tailwindcss-add-on-mode t)
+  :config
+  (add-hook 'lsp-tailwindcss-major-modes 'svelte-mode))
 
 (use-package dap-mode
   :ensure t
@@ -420,12 +433,18 @@
   :config
   (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
   (add-to-list 'auto-mode-alist '("pages\\/.*\\.js\\'" . rjsx-mode))
-  (setq js2-mode-show-strict-warnings nil)
-  (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-basic-offset 2)
+  ;; (setq js2-mode-show-strict-warnings nil)
+  ;; (setq js2-strict-trailing-comma-warning nil)
+  ;; (setq js2-basic-offset 2)
   (setq js-indent-level 2))
 
 (add-to-list 'auto-mode-alist '("react" . rjsx-mode))
+
+
+(use-package js2-mode
+    :ensure t
+    :mode (("\\.js\\'" . js2-mode)
+           ("\\.jsx\\'" . js2-jsx-mode)))
 
 (use-package js
   :ensure nil
@@ -464,14 +483,15 @@
   :ensure t
   :mode "\\.svelte\\'"
   :hook
-  (svelte-mode . lsp-deferred))
+  (svelte-mode . lsp-deferred)
+  :config
+  (setq svelte-basic-offset 2))
 
 (use-package web-mode
   :ensure t
   :defer t
   :mode ("\\.html\\'"
-         "\\.css\\'"
-         "\\.svelte\\'")
+         "\\.css\\'")
   :config
   (setq web-mode-script-padding 2)
   (setq web-mode-style-padding 2)
@@ -564,6 +584,10 @@
   :config
   (company-prescient-mode 1))
 
+;; Docker mode
+(use-package dockerfile-mode
+  :ensure t)
+
 ;; pdf-view setup
 (use-package pdf-tools
   :ensure t
@@ -587,7 +611,7 @@
   :ensure t
   :config
   (setq modus-themes-scale-headings t)
-  (load-theme 'modus-vivendi))
+  (load-theme 'modus-vivendi-tinted))
 
 (use-package zenburn-theme
   :ensure t
@@ -640,6 +664,7 @@
 (setq org-log-done 'time)
 (setq org-log-into-drawer t)
 (setq latex-run-command "pdflatex")
+(setq org-clock-sound "~/Music/bell.wav")
 
 (require 'org-tempo)
 
@@ -675,8 +700,16 @@
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
+(defun kw/org-mode-visual-fill ()
+  "Center the files for better experience
+   in the visual-fill-column mode."
+  (setq visual-fill-column-width 120
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
 (use-package visual-fill-column
-  :hook (org-mode . kw/org-mode-visual-fill))
+  :hook ((org-mode . kw/org-mode-visual-fill)
+         (org-agenda-mode . kw/org-mode-visual-fill)))
 
 ;; org-mode agenda setup
 (setq org-directory "~/Dropbox/OrgFiles/")
