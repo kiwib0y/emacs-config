@@ -247,7 +247,9 @@
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
-  :commands (magit-status magit-get-current-branch))
+  :commands (magit-status magit-get-current-branch)
+  :config
+  (add-hook 'git-commit-mode-hook 'goto-address-mode))
 
 (use-package htmlize
   :ensure t)
