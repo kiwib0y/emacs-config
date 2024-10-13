@@ -70,19 +70,19 @@
   (set-face-attribute 'fixed-pitch nil
           :font "Hack" :height kw/font-sizes))
 
-;; Set UTF-8 for easy cross-platform use
+;; set UTF-8 for easy cross-platform use
 (set-default-coding-systems 'utf-8)
 
-;; Set transparent opacity
+;; set transparent opacity
 (set-frame-parameter nil 'alpha-background 78)
 (add-to-list 'default-frame-alist '(alpha-background . 78))
 
 ;; daemon frame setup
 (if (daemonp)
     (add-hook 'after-make-frame-functions
-        (lambda (frame)
-    (with-selected-frame frame
-      (kw/font-face))))
+              (lambda (frame)
+                (with-selected-frame frame
+                  (kw/font-face))))
   (kw/font-face))
 
 ;; set tabs to be 2 spaces
