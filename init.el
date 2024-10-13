@@ -586,7 +586,7 @@
   :config
   (company-prescient-mode 1))
 
-;; Docker mode
+;; docker mode
 (use-package dockerfile-mode
   :ensure t)
 
