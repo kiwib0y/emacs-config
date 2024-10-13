@@ -632,19 +632,17 @@
         (concat "[" (getenv "USER") "@" (system-name) " "
                 (eshell/pwd) "] " (if (= (user-uid) 0) "# " "λ "))))
 
-;; ORG
+;; org
 (defun kw/org-mode-setup ()
   "My personal org mode setup."
   (org-indent-mode t)
   (visual-line-mode 1))
 
-;; disable electric-pair-mode
-(add-hook 'org-mode-hook
-          (lambda () (electric-pair-mode 0)))
-
 (use-package org
   :defer t
-  :hook (org-mode . kw/org-mode-setup)
+  :hook ((org-mode . kw/org-mode-setup)
+         (org-mode . (lambda () (electric-pair-mode 0))))
+
   :config
   (setq org-ellipsis "↴")
   (setq org-hide-emphasis-markers t)
