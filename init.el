@@ -537,6 +537,15 @@
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
+;; go setup
+(use-package go-mode
+  :ensure t
+  :hook
+  (go-mode . lsp-deferred)
+  :config
+  (setq indent-tabs-mode nil
+        tab-width 4))
+
 ;; terraform setup
 (use-package terraform-mode
   ;; terraform + lsp is very buggy for now
