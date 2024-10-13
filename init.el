@@ -47,6 +47,8 @@
 (setq inhibit-startup-message t)
 (setq ad-redefinition-action 'accept)               ;; Remove redefinition warning
 (setq native-comp-async-report-warnings-errors nil) ;; Remove native compilation error warnings
+(setq switch-to-buffer-obey-display-actions t)
+
 
 ;; don't store backup files
 (setq make-backup-files nil)
@@ -133,7 +135,6 @@
 ;; update the package metadata if the local cache is missing
 (unless package-archive-contents
   (package-refresh-contents))
-
 (eval-when-compile
   (require 'use-package))
 
