@@ -48,11 +48,11 @@
   :ensure t
   :hook (prog-mode . corfu-mode)
   :custom
-  (corfu-auto t)        ; Only use `corfu' when calling `completion-at-point' or
+  (corfu-auto t)                    ; Only use `corfu' when calling `completion-at-point' or
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.6)
   (corfu-min-width 80)
-  (corfu-max-width corfu-min-width)       ; Always have the same width
+  (corfu-max-width corfu-min-width) ; Always have the same width
   (corfu-count 14)
   (corfu-scroll-margin 4)
   (corfu-cycle nil)
@@ -65,6 +65,8 @@
   :bind
   (("C-." . embark-act)
    ("C-;" . embark-dwim)
+   ("C-h B" . embark-bindings)
+   ("C-," . embark-act-all)
    :map minibuffer-local-map
    ("C-," . embark-act-all))
   :init
