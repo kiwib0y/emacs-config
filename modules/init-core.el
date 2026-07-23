@@ -83,10 +83,10 @@
 
 (use-package windmove
   :config
-  (global-set-key (kbd "S-<left>") 'windmove-left)
-  (global-set-key (kbd "S-<right>") 'windmove-right)
-  (global-set-key (kbd "S-<up>") 'windmove-up)
-  (global-set-key (kbd "S-<down>") 'windmove-down))
+  (global-set-key (kbd "C-s-h") 'windmove-left)
+  (global-set-key (kbd "C-s-l") 'windmove-right)
+  (global-set-key (kbd "C-s-k") 'windmove-up)
+  (global-set-key (kbd "C-s-j") 'windmove-down))
 
 (use-package pdf-tools
   :config
